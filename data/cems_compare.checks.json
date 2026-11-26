@@ -1,0 +1,498 @@
+{
+  "partial": false,
+  "dataset": "cems-fire-historical-v1",
+  "system_version": "4_1",
+  "product_type": "reanalysis",
+  "dataset_type": "consolidated_dataset",
+  "grid_degrees": 0.25,
+  "years": [
+    2015,
+    2018
+  ],
+  "months": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "ewds_request_id": "0e314035-6416-4eaa-80e6-3b267b327b83",
+  "reference_file": ".cache/cems/cems-fire-historical-v1-4_1-ontario-2015-2018-may-oct-six-indices.zip",
+  "ours_file": "data/ontario-fire-weather.parquet",
+  "matched_cell_days_before_finite_pair_filter": 1840,
+  "sites": [
+    {
+      "site": "Red Lake",
+      "cell_id": 289843,
+      "latitude": 51.031620025634766,
+      "longitude": -93.86581420898438,
+      "reference_latitude": 51.0,
+      "reference_longitude": -93.75
+    },
+    {
+      "site": "Fort Severn",
+      "cell_id": 329419,
+      "latitude": 55.98688888549805,
+      "longitude": -87.62448120117188,
+      "reference_latitude": 56.0,
+      "reference_longitude": -87.5
+    },
+    {
+      "site": "Wawa",
+      "cell_id": 268025,
+      "latitude": 47.95680618286133,
+      "longitude": -84.75430297851562,
+      "reference_latitude": 48.0,
+      "reference_longitude": -84.75
+    },
+    {
+      "site": "Timmins",
+      "cell_id": 274404,
+      "latitude": 48.44708251953125,
+      "longitude": -81.28759765625,
+      "reference_latitude": 48.5,
+      "reference_longitude": -81.25
+    },
+    {
+      "site": "North Bay",
+      "cell_id": 259596,
+      "latitude": 46.300811767578125,
+      "longitude": -79.47332763671875,
+      "reference_latitude": 46.25,
+      "reference_longitude": -79.5
+    }
+  ],
+  "matching": "Nearest CEMS grid centre and identical calendar date; monthly metrics pool both years and all five cells; yearly correlations pool all May\u2013October dates and cells within each year. Each index uses only finite pairs.",
+  "bias_definition": "xclim (CaSR) minus CEMS",
+  "seasonal_bias_flag_rule": "Flag if absolute October bias is at least twice absolute May bias and increases by at least 25% of that index\u2019s overall RMSE. The endpoint flag does not imply monotonic growth.",
+  "indices": {
+    "FFMC": {
+      "overall": {
+        "paired_days": 1840,
+        "pearson_r": 0.8641023812536429,
+        "bias_ours_minus_cems": -1.7169552375441013,
+        "rmse": 10.692406626898523
+      },
+      "monthly": {
+        "05": {
+          "paired_days": 310,
+          "pearson_r": 0.8849743145637248,
+          "bias_ours_minus_cems": -0.0719014790750319,
+          "rmse": 9.602332827319668
+        },
+        "06": {
+          "paired_days": 300,
+          "pearson_r": 0.8465605721318492,
+          "bias_ours_minus_cems": -0.16786921501159668,
+          "rmse": 10.656196922115821
+        },
+        "07": {
+          "paired_days": 310,
+          "pearson_r": 0.8229922576819585,
+          "bias_ours_minus_cems": -0.13197506320091987,
+          "rmse": 10.78321507655611
+        },
+        "08": {
+          "paired_days": 310,
+          "pearson_r": 0.8266603014481018,
+          "bias_ours_minus_cems": -1.839567545921572,
+          "rmse": 11.51274737417629
+        },
+        "09": {
+          "paired_days": 300,
+          "pearson_r": 0.8617692646595795,
+          "bias_ours_minus_cems": -4.075487070083618,
+          "rmse": 11.47935952953486
+        },
+        "10": {
+          "paired_days": 310,
+          "pearson_r": 0.8966119368906749,
+          "bias_ours_minus_cems": -4.041042207133385,
+          "rmse": 10.007355311376779
+        }
+      },
+      "yearly": {
+        "2015": {
+          "paired_days": 920,
+          "pearson_r": 0.8484895059194961
+        },
+        "2018": {
+          "paired_days": 920,
+          "pearson_r": 0.8793557562965678
+        }
+      },
+      "pearson_r_below_0_8": {
+        "overall": false,
+        "months": [],
+        "years": []
+      },
+      "seasonal_bias": {
+        "may_bias": -0.0719014790750319,
+        "october_bias": -4.041042207133385,
+        "october_minus_may_absolute_bias": 3.969140728058353,
+        "absolute_bias_grows": true,
+        "absolute_bias_non_decreasing": false
+      }
+    },
+    "DMC": {
+      "overall": {
+        "paired_days": 1840,
+        "pearson_r": 0.8716997269678942,
+        "bias_ours_minus_cems": -0.5470047168560205,
+        "rmse": 4.822915291732937
+      },
+      "monthly": {
+        "05": {
+          "paired_days": 310,
+          "pearson_r": 0.8815041418203539,
+          "bias_ours_minus_cems": -0.17275919493648315,
+          "rmse": 4.44210430646934
+        },
+        "06": {
+          "paired_days": 300,
+          "pearson_r": 0.7716536024641852,
+          "bias_ours_minus_cems": -0.5906655859947204,
+          "rmse": 5.639792307323881
+        },
+        "07": {
+          "paired_days": 310,
+          "pearson_r": 0.8130612407372783,
+          "bias_ours_minus_cems": -0.13303155242916076,
+          "rmse": 7.100015043148243
+        },
+        "08": {
+          "paired_days": 310,
+          "pearson_r": 0.8592793564182103,
+          "bias_ours_minus_cems": 0.27611757614199195,
+          "rmse": 4.973398451927897
+        },
+        "09": {
+          "paired_days": 300,
+          "pearson_r": 0.8923323077140978,
+          "bias_ours_minus_cems": -1.5468063391496738,
+          "rmse": 2.8093326141894486
+        },
+        "10": {
+          "paired_days": 310,
+          "pearson_r": 0.9123447000713415,
+          "bias_ours_minus_cems": -1.1485432851368622,
+          "rmse": 2.183167953373909
+        }
+      },
+      "yearly": {
+        "2015": {
+          "paired_days": 920,
+          "pearson_r": 0.853315510249598
+        },
+        "2018": {
+          "paired_days": 920,
+          "pearson_r": 0.8779515169990205
+        }
+      },
+      "pearson_r_below_0_8": {
+        "overall": false,
+        "months": [
+          "06"
+        ],
+        "years": []
+      },
+      "seasonal_bias": {
+        "may_bias": -0.17275919493648315,
+        "october_bias": -1.1485432851368622,
+        "october_minus_may_absolute_bias": 0.975784090200379,
+        "absolute_bias_grows": false,
+        "absolute_bias_non_decreasing": false
+      }
+    },
+    "DC": {
+      "overall": {
+        "paired_days": 1840,
+        "pearson_r": 0.8706378425633244,
+        "bias_ours_minus_cems": 7.7472751990284605,
+        "rmse": 53.17566983206825
+      },
+      "monthly": {
+        "05": {
+          "paired_days": 310,
+          "pearson_r": 0.711307699537614,
+          "bias_ours_minus_cems": -5.459836544529084,
+          "rmse": 23.40584421205286
+        },
+        "06": {
+          "paired_days": 300,
+          "pearson_r": 0.7971488870188428,
+          "bias_ours_minus_cems": -6.840290905634562,
+          "rmse": 32.54489105227989
+        },
+        "07": {
+          "paired_days": 310,
+          "pearson_r": 0.7257083023912781,
+          "bias_ours_minus_cems": 10.039536191571143,
+          "rmse": 62.29801195306811
+        },
+        "08": {
+          "paired_days": 310,
+          "pearson_r": 0.7934023688542897,
+          "bias_ours_minus_cems": 29.632191498048844,
+          "rmse": 74.34789514822796
+        },
+        "09": {
+          "paired_days": 300,
+          "pearson_r": 0.8437574282141158,
+          "bias_ours_minus_cems": 21.98158056338628,
+          "rmse": 57.15803560337644
+        },
+        "10": {
+          "paired_days": 310,
+          "pearson_r": 0.8601550710695803,
+          "bias_ours_minus_cems": -2.880925116423638,
+          "rmse": 51.38424754192183
+        }
+      },
+      "yearly": {
+        "2015": {
+          "paired_days": 920,
+          "pearson_r": 0.8674632095898206
+        },
+        "2018": {
+          "paired_days": 920,
+          "pearson_r": 0.8681167895252587
+        }
+      },
+      "pearson_r_below_0_8": {
+        "overall": false,
+        "months": [
+          "05",
+          "06",
+          "07",
+          "08"
+        ],
+        "years": []
+      },
+      "seasonal_bias": {
+        "may_bias": -5.459836544529084,
+        "october_bias": -2.880925116423638,
+        "october_minus_may_absolute_bias": -2.5789114281054464,
+        "absolute_bias_grows": false,
+        "absolute_bias_non_decreasing": false
+      }
+    },
+    "ISI": {
+      "overall": {
+        "paired_days": 1840,
+        "pearson_r": 0.8313328963236564,
+        "bias_ours_minus_cems": -0.4562592779656666,
+        "rmse": 1.471669219682691
+      },
+      "monthly": {
+        "05": {
+          "paired_days": 310,
+          "pearson_r": 0.8123291372204497,
+          "bias_ours_minus_cems": -0.24152617374708116,
+          "rmse": 1.45047707196276
+        },
+        "06": {
+          "paired_days": 300,
+          "pearson_r": 0.8515381032177469,
+          "bias_ours_minus_cems": -0.46545541461598106,
+          "rmse": 1.5963619567883645
+        },
+        "07": {
+          "paired_days": 310,
+          "pearson_r": 0.7812270129004988,
+          "bias_ours_minus_cems": -0.6482467003881535,
+          "rmse": 1.909610640936868
+        },
+        "08": {
+          "paired_days": 310,
+          "pearson_r": 0.8547104449228536,
+          "bias_ours_minus_cems": -0.4224150651862799,
+          "rmse": 1.303881191012744
+        },
+        "09": {
+          "paired_days": 300,
+          "pearson_r": 0.825140399338536,
+          "bias_ours_minus_cems": -0.5477184168167365,
+          "rmse": 1.3597933029576907
+        },
+        "10": {
+          "paired_days": 310,
+          "pearson_r": 0.8338821868133318,
+          "bias_ours_minus_cems": -0.4154408414107801,
+          "rmse": 1.071901091508588
+        }
+      },
+      "yearly": {
+        "2015": {
+          "paired_days": 920,
+          "pearson_r": 0.7748743856149283
+        },
+        "2018": {
+          "paired_days": 920,
+          "pearson_r": 0.8582096012291892
+        }
+      },
+      "pearson_r_below_0_8": {
+        "overall": false,
+        "months": [
+          "07"
+        ],
+        "years": [
+          "2015"
+        ]
+      },
+      "seasonal_bias": {
+        "may_bias": -0.24152617374708116,
+        "october_bias": -0.4154408414107801,
+        "october_minus_may_absolute_bias": 0.17391466766369892,
+        "absolute_bias_grows": false,
+        "absolute_bias_non_decreasing": false
+      }
+    },
+    "BUI": {
+      "overall": {
+        "paired_days": 1840,
+        "pearson_r": 0.8920355396320159,
+        "bias_ours_minus_cems": -0.6274231726412519,
+        "rmse": 6.364865574416828
+      },
+      "monthly": {
+        "05": {
+          "paired_days": 310,
+          "pearson_r": 0.9061505894416304,
+          "bias_ours_minus_cems": 0.14640610433153567,
+          "rmse": 4.504243903090154
+        },
+        "06": {
+          "paired_days": 300,
+          "pearson_r": 0.7827967728728688,
+          "bias_ours_minus_cems": -0.7720975907643636,
+          "rmse": 7.1840088296219395
+        },
+        "07": {
+          "paired_days": 310,
+          "pearson_r": 0.8565174074868109,
+          "bias_ours_minus_cems": 0.2976476087204872,
+          "rmse": 8.76809702669387
+        },
+        "08": {
+          "paired_days": 310,
+          "pearson_r": 0.87326802340543,
+          "bias_ours_minus_cems": 0.6857669723130042,
+          "rmse": 7.598821586552059
+        },
+        "09": {
+          "paired_days": 300,
+          "pearson_r": 0.8930537755291996,
+          "bias_ours_minus_cems": -2.284436040495833,
+          "rmse": 4.602810886159264
+        },
+        "10": {
+          "paired_days": 310,
+          "pearson_r": 0.8869483860124245,
+          "bias_ours_minus_cems": -1.8959450346613003,
+          "rmse": 3.8856158916341768
+        }
+      },
+      "yearly": {
+        "2015": {
+          "paired_days": 920,
+          "pearson_r": 0.8654794886357827
+        },
+        "2018": {
+          "paired_days": 920,
+          "pearson_r": 0.9010684642790662
+        }
+      },
+      "pearson_r_below_0_8": {
+        "overall": false,
+        "months": [
+          "06"
+        ],
+        "years": []
+      },
+      "seasonal_bias": {
+        "may_bias": 0.14640610433153567,
+        "october_bias": -1.8959450346613003,
+        "october_minus_may_absolute_bias": 1.7495389303297646,
+        "absolute_bias_grows": true,
+        "absolute_bias_non_decreasing": false
+      }
+    },
+    "FWI": {
+      "overall": {
+        "paired_days": 1840,
+        "pearson_r": 0.8473969851528546,
+        "bias_ours_minus_cems": -0.7423093133260891,
+        "rmse": 2.6766982470844627
+      },
+      "monthly": {
+        "05": {
+          "paired_days": 310,
+          "pearson_r": 0.8449846066753941,
+          "bias_ours_minus_cems": -0.23906369916685005,
+          "rmse": 2.238668506641884
+        },
+        "06": {
+          "paired_days": 300,
+          "pearson_r": 0.8439091055240588,
+          "bias_ours_minus_cems": -0.8506865724166615,
+          "rmse": 3.0118746941553045
+        },
+        "07": {
+          "paired_days": 310,
+          "pearson_r": 0.8246902424605276,
+          "bias_ours_minus_cems": -1.246965955350004,
+          "rmse": 3.883059883376466
+        },
+        "08": {
+          "paired_days": 310,
+          "pearson_r": 0.8729151798848281,
+          "bias_ours_minus_cems": -0.675252155806889,
+          "rmse": 2.4759909667850035
+        },
+        "09": {
+          "paired_days": 300,
+          "pearson_r": 0.7638663316769598,
+          "bias_ours_minus_cems": -0.8584650209852098,
+          "rmse": 2.340814929662627
+        },
+        "10": {
+          "paired_days": 310,
+          "pearson_r": 0.7595082172000238,
+          "bias_ours_minus_cems": -0.5906654751583296,
+          "rmse": 1.4914075576714698
+        }
+      },
+      "yearly": {
+        "2015": {
+          "paired_days": 920,
+          "pearson_r": 0.7862936313610304
+        },
+        "2018": {
+          "paired_days": 920,
+          "pearson_r": 0.8685995744160511
+        }
+      },
+      "pearson_r_below_0_8": {
+        "overall": false,
+        "months": [
+          "09",
+          "10"
+        ],
+        "years": [
+          "2015"
+        ]
+      },
+      "seasonal_bias": {
+        "may_bias": -0.23906369916685005,
+        "october_bias": -0.5906654751583296,
+        "october_minus_may_absolute_bias": 0.3516017759914795,
+        "absolute_bias_grows": false,
+        "absolute_bias_non_decreasing": false
+      }
+    }
+  },
+  "monthly_bias_plot": "data/cems_compare.monthly_bias.svg"
+}
