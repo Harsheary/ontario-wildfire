@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title description">
+<title id="title">Monthly xclim minus CEMS bias</title>
+<desc id="description">Six panels, each with an independent vertical scale and a dashed zero line.</desc>
+<g fill="currentColor" font-family="sans-serif" font-size="14">
+<text x="20" y="27" font-size="19" font-weight="bold">Monthly bias: xclim − Copernicus CEMS</text>
+<text x="20" y="47" opacity=".72">Five matched sites, 2015 and 2018 pooled · independent y scales · dashed line = zero</text>
+<g transform="translate(20 65)">
+<text x="0" y="15" font-weight="bold">FFMC</text>
+<path d="M41 24.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="28.00" text-anchor="end" font-size="11">0.4</text>
+<path d="M41 35.75H268" fill="none" stroke="currentColor" opacity=".35" stroke-dasharray="4 4"/>
+<text x="35" y="39.75" text-anchor="end" font-size="11">0</text>
+<path d="M41 165.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="169.00" text-anchor="end" font-size="11">-4.5</text>
+<polyline points="47,37.82 90,40.59 133,39.55 176,88.79 219,153.25 262,152.26" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="47" cy="37.82" r="3"><title>May: -0.07</title></circle>
+<text x="47" y="185" text-anchor="middle" font-size="12">May</text>
+<circle cx="90" cy="40.59" r="3"><title>Jun: -0.17</title></circle>
+<text x="90" y="185" text-anchor="middle" font-size="12">Jun</text>
+<circle cx="133" cy="39.55" r="3"><title>Jul: -0.13</title></circle>
+<text x="133" y="185" text-anchor="middle" font-size="12">Jul</text>
+<circle cx="176" cy="88.79" r="3"><title>Aug: -1.84</title></circle>
+<text x="176" y="185" text-anchor="middle" font-size="12">Aug</text>
+<circle cx="219" cy="153.25" r="3"><title>Sep: -4.08</title></circle>
+<text x="219" y="185" text-anchor="middle" font-size="12">Sep</text>
+<circle cx="262" cy="152.26" r="3"><title>Oct: -4.04</title></circle>
+<text x="262" y="185" text-anchor="middle" font-size="12">Oct</text>
+</g>
+<g transform="translate(314 65)">
+<text x="0" y="15" font-weight="bold">DMC</text>
+<path d="M41 24.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="28.00" text-anchor="end" font-size="11">0.4</text>
+<path d="M41 52.49H268" fill="none" stroke="currentColor" opacity=".35" stroke-dasharray="4 4"/>
+<text x="35" y="56.49" text-anchor="end" font-size="11">0</text>
+<path d="M41 165.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="169.00" text-anchor="end" font-size="11">-1.7</text>
+<polyline points="47,63.91 90,91.55 133,61.28 176,34.23 219,154.77 262,128.44" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="47" cy="63.91" r="3"><title>May: -0.17</title></circle>
+<text x="47" y="185" text-anchor="middle" font-size="12">May</text>
+<circle cx="90" cy="91.55" r="3"><title>Jun: -0.59</title></circle>
+<text x="90" y="185" text-anchor="middle" font-size="12">Jun</text>
+<circle cx="133" cy="61.28" r="3"><title>Jul: -0.13</title></circle>
+<text x="133" y="185" text-anchor="middle" font-size="12">Jul</text>
+<circle cx="176" cy="34.23" r="3"><title>Aug: +0.28</title></circle>
+<text x="176" y="185" text-anchor="middle" font-size="12">Aug</text>
+<circle cx="219" cy="154.77" r="3"><title>Sep: -1.55</title></circle>
+<text x="219" y="185" text-anchor="middle" font-size="12">Sep</text>
+<circle cx="262" cy="128.44" r="3"><title>Oct: -1.15</title></circle>
+<text x="262" y="185" text-anchor="middle" font-size="12">Oct</text>
+</g>
+<g transform="translate(608 65)">
+<text x="0" y="15" font-weight="bold">DC</text>
+<path d="M41 24.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="28.00" text-anchor="end" font-size="11">32.6</text>
+<path d="M41 132.40H268" fill="none" stroke="currentColor" opacity=".35" stroke-dasharray="4 4"/>
+<text x="35" y="136.40" text-anchor="end" font-size="11">0</text>
+<path d="M41 165.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="169.00" text-anchor="end" font-size="11">-9.8</text>
+<polyline points="47,150.55 90,155.15 133,99.01 176,33.85 219,59.30 262,141.98" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="47" cy="150.55" r="3"><title>May: -5.46</title></circle>
+<text x="47" y="185" text-anchor="middle" font-size="12">May</text>
+<circle cx="90" cy="155.15" r="3"><title>Jun: -6.84</title></circle>
+<text x="90" y="185" text-anchor="middle" font-size="12">Jun</text>
+<circle cx="133" cy="99.01" r="3"><title>Jul: +10.04</title></circle>
+<text x="133" y="185" text-anchor="middle" font-size="12">Jul</text>
+<circle cx="176" cy="33.85" r="3"><title>Aug: +29.63</title></circle>
+<text x="176" y="185" text-anchor="middle" font-size="12">Aug</text>
+<circle cx="219" cy="59.30" r="3"><title>Sep: +21.98</title></circle>
+<text x="219" y="185" text-anchor="middle" font-size="12">Sep</text>
+<circle cx="262" cy="141.98" r="3"><title>Oct: -2.88</title></circle>
+<text x="262" y="185" text-anchor="middle" font-size="12">Oct</text>
+</g>
+<g transform="translate(20 280)">
+<text x="0" y="15" font-weight="bold">ISI</text>
+<path d="M41 24.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="28.00" text-anchor="end" font-size="11">0.1</text>
+<path d="M41 35.75H268" fill="none" stroke="currentColor" opacity=".35" stroke-dasharray="4 4"/>
+<text x="35" y="39.75" text-anchor="end" font-size="11">0</text>
+<path d="M41 165.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="169.00" text-anchor="end" font-size="11">-0.7</text>
+<polyline points="47,79.53 90,120.12 133,153.25 176,112.32 219,135.03 262,111.05" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="47" cy="79.53" r="3"><title>May: -0.24</title></circle>
+<text x="47" y="185" text-anchor="middle" font-size="12">May</text>
+<circle cx="90" cy="120.12" r="3"><title>Jun: -0.47</title></circle>
+<text x="90" y="185" text-anchor="middle" font-size="12">Jun</text>
+<circle cx="133" cy="153.25" r="3"><title>Jul: -0.65</title></circle>
+<text x="133" y="185" text-anchor="middle" font-size="12">Jul</text>
+<circle cx="176" cy="112.32" r="3"><title>Aug: -0.42</title></circle>
+<text x="176" y="185" text-anchor="middle" font-size="12">Aug</text>
+<circle cx="219" cy="135.03" r="3"><title>Sep: -0.55</title></circle>
+<text x="219" y="185" text-anchor="middle" font-size="12">Sep</text>
+<circle cx="262" cy="111.05" r="3"><title>Oct: -0.42</title></circle>
+<text x="262" y="185" text-anchor="middle" font-size="12">Oct</text>
+</g>
+<g transform="translate(314 280)">
+<text x="0" y="15" font-weight="bold">BUI</text>
+<path d="M41 24.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="28.00" text-anchor="end" font-size="11">0.9</text>
+<path d="M41 61.61H268" fill="none" stroke="currentColor" opacity=".35" stroke-dasharray="4 4"/>
+<text x="35" y="65.61" text-anchor="end" font-size="11">0</text>
+<path d="M41 165.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="169.00" text-anchor="end" font-size="11">-2.5</text>
+<polyline points="47,55.59 90,93.38 133,49.37 176,33.40 219,155.60 262,139.62" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="47" cy="55.59" r="3"><title>May: +0.15</title></circle>
+<text x="47" y="185" text-anchor="middle" font-size="12">May</text>
+<circle cx="90" cy="93.38" r="3"><title>Jun: -0.77</title></circle>
+<text x="90" y="185" text-anchor="middle" font-size="12">Jun</text>
+<circle cx="133" cy="49.37" r="3"><title>Jul: +0.30</title></circle>
+<text x="133" y="185" text-anchor="middle" font-size="12">Jul</text>
+<circle cx="176" cy="33.40" r="3"><title>Aug: +0.69</title></circle>
+<text x="176" y="185" text-anchor="middle" font-size="12">Aug</text>
+<circle cx="219" cy="155.60" r="3"><title>Sep: -2.28</title></circle>
+<text x="219" y="185" text-anchor="middle" font-size="12">Sep</text>
+<circle cx="262" cy="139.62" r="3"><title>Oct: -1.90</title></circle>
+<text x="262" y="185" text-anchor="middle" font-size="12">Oct</text>
+</g>
+<g transform="translate(608 280)">
+<text x="0" y="15" font-weight="bold">FWI</text>
+<path d="M41 24.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="28.00" text-anchor="end" font-size="11">0.1</text>
+<path d="M41 35.75H268" fill="none" stroke="currentColor" opacity=".35" stroke-dasharray="4 4"/>
+<text x="35" y="39.75" text-anchor="end" font-size="11">0</text>
+<path d="M41 165.00H268" fill="none" stroke="currentColor" opacity=".35"/>
+<text x="35" y="169.00" text-anchor="end" font-size="11">-1.4</text>
+<polyline points="47,58.28 90,115.91 133,153.25 176,99.38 219,116.64 262,91.41" fill="none" stroke="currentColor" stroke-width="2"/>
+<circle cx="47" cy="58.28" r="3"><title>May: -0.24</title></circle>
+<text x="47" y="185" text-anchor="middle" font-size="12">May</text>
+<circle cx="90" cy="115.91" r="3"><title>Jun: -0.85</title></circle>
+<text x="90" y="185" text-anchor="middle" font-size="12">Jun</text>
+<circle cx="133" cy="153.25" r="3"><title>Jul: -1.25</title></circle>
+<text x="133" y="185" text-anchor="middle" font-size="12">Jul</text>
+<circle cx="176" cy="99.38" r="3"><title>Aug: -0.68</title></circle>
+<text x="176" y="185" text-anchor="middle" font-size="12">Aug</text>
+<circle cx="219" cy="116.64" r="3"><title>Sep: -0.86</title></circle>
+<text x="219" y="185" text-anchor="middle" font-size="12">Sep</text>
+<circle cx="262" cy="91.41" r="3"><title>Oct: -0.59</title></circle>
+<text x="262" y="185" text-anchor="middle" font-size="12">Oct</text>
+</g>
+</g></svg>

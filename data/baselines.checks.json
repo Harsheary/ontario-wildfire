@@ -1,0 +1,648 @@
+{
+  "source": "data/model_table.parquet",
+  "years": [
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "rows_read": 17346570,
+  "row_groups_read": 229,
+  "partial_row_groups": [
+    {
+      "row_group": 228,
+      "training_prefix_rows": 56874,
+      "total_rows": 75832
+    }
+  ],
+  "cells_per_day": 9479,
+  "top_cells_per_day": 95,
+  "random_seed": 42,
+  "top_k_ties": "cell_id ascending",
+  "pr_auc_method": "Non-interpolated average precision for target_any over all cell-days in each year",
+  "climatology_method": "Per-cell target_any rate in the other nine training years",
+  "annual": {
+    "2010": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 650,
+        "target_human": 299,
+        "target_lightning": 336
+      },
+      "base_rate": 0.0003747138483285168
+    },
+    "2011": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 1242,
+        "target_human": 395,
+        "target_lightning": 818
+      },
+      "base_rate": 0.0007159916917292583
+    },
+    "2012": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 1401,
+        "target_human": 446,
+        "target_lightning": 933
+      },
+      "base_rate": 0.0008076524638588493
+    },
+    "2013": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 521,
+        "target_human": 287,
+        "target_lightning": 224
+      },
+      "base_rate": 0.0003003475615063958
+    },
+    "2014": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 289,
+        "target_human": 163,
+        "target_lightning": 116
+      },
+      "base_rate": 0.0001666035417952944
+    },
+    "2015": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 573,
+        "target_human": 261,
+        "target_lightning": 306
+      },
+      "base_rate": 0.00033032466937267714
+    },
+    "2016": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 558,
+        "target_human": 375,
+        "target_lightning": 168
+      },
+      "base_rate": 0.0003216774267189421
+    },
+    "2017": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 733,
+        "target_human": 189,
+        "target_lightning": 539
+      },
+      "base_rate": 0.0004225619243458505
+    },
+    "2018": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 1238,
+        "target_human": 336,
+        "target_lightning": 892
+      },
+      "base_rate": 0.000713685760354929
+    },
+    "2019": {
+      "rows": 1734657,
+      "positives": {
+        "target_any": 501,
+        "target_human": 251,
+        "target_lightning": 244
+      },
+      "base_rate": 0.00028881790463474913
+    }
+  },
+  "baselines": {
+    "FWI": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.023076923076923078,
+          "top_1pct_catch_human": 0.020066889632107024,
+          "top_1pct_catch_lightning": 0.026785714285714284,
+          "pr_auc": 0.001132105676887592,
+          "pr_auc_over_base_rate": 3.0212539033119996
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.01932367149758454,
+          "top_1pct_catch_human": 0.015189873417721518,
+          "top_1pct_catch_lightning": 0.022004889975550123,
+          "pr_auc": 0.0011951431389139822,
+          "pr_auc_over_base_rate": 1.6692136971973524
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.017130620985010708,
+          "top_1pct_catch_human": 0.01569506726457399,
+          "top_1pct_catch_lightning": 0.01714898177920686,
+          "pr_auc": 0.0029744243180343144,
+          "pr_auc_over_base_rate": 3.682802258564204
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.023032629558541268,
+          "top_1pct_catch_human": 0.024390243902439025,
+          "top_1pct_catch_lightning": 0.022321428571428572,
+          "pr_auc": 0.000588563394941471,
+          "pr_auc_over_base_rate": 1.9596077024548697
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.03460207612456748,
+          "top_1pct_catch_human": 0.024539877300613498,
+          "top_1pct_catch_lightning": 0.05172413793103448,
+          "pr_auc": 0.00042822635035494224,
+          "pr_auc_over_base_rate": 2.5703316132444742
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.04013961605584642,
+          "top_1pct_catch_human": 0.02681992337164751,
+          "top_1pct_catch_lightning": 0.05228758169934641,
+          "pr_auc": 0.0010596302962163325,
+          "pr_auc_over_base_rate": 3.207844870407914
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.03225806451612903,
+          "top_1pct_catch_human": 0.034666666666666665,
+          "top_1pct_catch_lightning": 0.023809523809523808,
+          "pr_auc": 0.0022474916753453685,
+          "pr_auc_over_base_rate": 6.986787037777009
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.0068212824010914054,
+          "top_1pct_catch_human": 0.010582010582010581,
+          "top_1pct_catch_lightning": 0.0055658627087198514,
+          "pr_auc": 0.000984884555448942,
+          "pr_auc_over_base_rate": 2.330746095909134
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.03796445880452343,
+          "top_1pct_catch_human": 0.03571428571428571,
+          "top_1pct_catch_lightning": 0.03923766816143498,
+          "pr_auc": 0.0018513523687935993,
+          "pr_auc_over_base_rate": 2.594072169623908
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.013972055888223553,
+          "top_1pct_catch_human": 0.0199203187250996,
+          "top_1pct_catch_lightning": 0.00819672131147541,
+          "pr_auc": 0.0007660068571737371,
+          "pr_auc_over_base_rate": 2.6522138859170123
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.02483213989084409,
+          "min": {
+            "year": 2017,
+            "value": 0.0068212824010914054
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.04013961605584642
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.022758515657716513,
+          "min": {
+            "year": 2017,
+            "value": 0.010582010582010581
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.03571428571428571
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.026908251023343478,
+          "min": {
+            "year": 2017,
+            "value": 0.0055658627087198514
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.05228758169934641
+          }
+        },
+        "pr_auc": {
+          "mean": 0.001322782863211028,
+          "min": {
+            "year": 2014,
+            "value": 0.00042822635035494224
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0029744243180343144
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 3.067487323440788,
+          "min": {
+            "year": 2011,
+            "value": 1.6692136971973524
+          },
+          "max": {
+            "year": 2016,
+            "value": 6.986787037777009
+          }
+        }
+      }
+    },
+    "fire_count_3x3_5y_all": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.11692307692307692,
+          "top_1pct_catch_human": 0.1605351170568562,
+          "top_1pct_catch_lightning": 0.08035714285714286,
+          "pr_auc": 0.002128507767553459,
+          "pr_auc_over_base_rate": 5.680355228524586
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.08776167471819646,
+          "top_1pct_catch_human": 0.17974683544303796,
+          "top_1pct_catch_lightning": 0.039119804400977995,
+          "pr_auc": 0.0030083262125711026,
+          "pr_auc_over_base_rate": 4.201621677069204
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.08065667380442541,
+          "top_1pct_catch_human": 0.13452914798206278,
+          "top_1pct_catch_lightning": 0.05251875669882101,
+          "pr_auc": 0.0031844791709352885,
+          "pr_auc_over_base_rate": 3.942883001582509
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.09021113243761997,
+          "top_1pct_catch_human": 0.13240418118466898,
+          "top_1pct_catch_lightning": 0.03125,
+          "pr_auc": 0.0014991023687365946,
+          "pr_auc_over_base_rate": 4.991225369761065
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.08650519031141868,
+          "top_1pct_catch_human": 0.1165644171779141,
+          "top_1pct_catch_lightning": 0.008620689655172414,
+          "pr_auc": 0.000904161115937158,
+          "pr_auc_over_base_rate": 5.427022176083747
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.1099476439790576,
+          "top_1pct_catch_human": 0.13026819923371646,
+          "top_1pct_catch_lightning": 0.09477124183006536,
+          "pr_auc": 0.001594164518240093,
+          "pr_auc_over_base_rate": 4.826053474200357
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.12724014336917563,
+          "top_1pct_catch_human": 0.16533333333333333,
+          "top_1pct_catch_lightning": 0.05952380952380952,
+          "pr_auc": 0.002373164967249444,
+          "pr_auc_over_base_rate": 7.377468140849496
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.04638472032742155,
+          "top_1pct_catch_human": 0.14285714285714285,
+          "top_1pct_catch_lightning": 0.012987012987012988,
+          "pr_auc": 0.0010220000756267817,
+          "pr_auc_over_base_rate": 2.4185806073486034
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.09289176090468497,
+          "top_1pct_catch_human": 0.23809523809523808,
+          "top_1pct_catch_lightning": 0.03699551569506727,
+          "pr_auc": 0.0040382687148234776,
+          "pr_auc_over_base_rate": 5.658328832027099
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.10778443113772455,
+          "top_1pct_catch_human": 0.16733067729083664,
+          "top_1pct_catch_lightning": 0.04918032786885246,
+          "pr_auc": 0.0016202936187236104,
+          "pr_auc_over_base_rate": 5.610087161226032
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.09463064479128018,
+          "min": {
+            "year": 2017,
+            "value": 0.04638472032742155
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.12724014336917563
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.15676642896548074,
+          "min": {
+            "year": 2014,
+            "value": 0.1165644171779141
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.23809523809523808
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.046532430151692186,
+          "min": {
+            "year": 2014,
+            "value": 0.008620689655172414
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.09477124183006536
+          }
+        },
+        "pr_auc": {
+          "mean": 0.002137246853039701,
+          "min": {
+            "year": 2014,
+            "value": 0.000904161115937158
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.0040382687148234776
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 5.013362566867269,
+          "min": {
+            "year": 2017,
+            "value": 2.4185806073486034
+          },
+          "max": {
+            "year": 2016,
+            "value": 7.377468140849496
+          }
+        }
+      }
+    },
+    "random": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.012307692307692308,
+          "top_1pct_catch_human": 0.013377926421404682,
+          "top_1pct_catch_lightning": 0.011904761904761904,
+          "pr_auc": 0.00037690890830100414,
+          "pr_auc_over_base_rate": 1.0058579633026077
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.012077294685990338,
+          "top_1pct_catch_human": 0.017721518987341773,
+          "top_1pct_catch_lightning": 0.008557457212713936,
+          "pr_auc": 0.0007302406446848376,
+          "pr_auc_over_base_rate": 1.0199010032101983
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.014275517487508922,
+          "top_1pct_catch_human": 0.004484304932735426,
+          "top_1pct_catch_lightning": 0.01929260450160772,
+          "pr_auc": 0.0008415303272097257,
+          "pr_auc_over_base_rate": 1.0419460905115212
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.003838771593090211,
+          "top_1pct_catch_human": 0.003484320557491289,
+          "top_1pct_catch_lightning": 0.004464285714285714,
+          "pr_auc": 0.0003111424367744408,
+          "pr_auc_over_base_rate": 1.0359412782108275
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.010380622837370242,
+          "top_1pct_catch_human": 0.006134969325153374,
+          "top_1pct_catch_lightning": 0.017241379310344827,
+          "pr_auc": 0.00017850178773209157,
+          "pr_auc_over_base_rate": 1.0714165245743488
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.0034904013961605585,
+          "top_1pct_catch_human": 0.0,
+          "top_1pct_catch_lightning": 0.006535947712418301,
+          "pr_auc": 0.00030705143402123483,
+          "pr_auc_over_base_rate": 0.9295443619284
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.016129032258064516,
+          "top_1pct_catch_human": 0.016,
+          "top_1pct_catch_lightning": 0.017857142857142856,
+          "pr_auc": 0.00032922591372435556,
+          "pr_auc_over_base_rate": 1.0234660140203395
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.008185538881309686,
+          "top_1pct_catch_human": 0.010582010582010581,
+          "top_1pct_catch_lightning": 0.0074211502782931356,
+          "pr_auc": 0.00044195059654474056,
+          "pr_auc_over_base_rate": 1.0458836233976945
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.012116316639741519,
+          "top_1pct_catch_human": 0.01488095238095238,
+          "top_1pct_catch_lightning": 0.011210762331838564,
+          "pr_auc": 0.0007188306734555851,
+          "pr_auc_over_base_rate": 1.0072089333800038
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.011976047904191617,
+          "top_1pct_catch_human": 0.00796812749003984,
+          "top_1pct_catch_lightning": 0.012295081967213115,
+          "pr_auc": 0.00031199653905262343,
+          "pr_auc_over_base_rate": 1.0802534539788555
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.010477723599111992,
+          "min": {
+            "year": 2015,
+            "value": 0.0034904013961605585
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.016129032258064516
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.009463413067712935,
+          "min": {
+            "year": 2015,
+            "value": 0.0
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.017721518987341773
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.011678057379062008,
+          "min": {
+            "year": 2013,
+            "value": 0.004464285714285714
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.01929260450160772
+          }
+        },
+        "pr_auc": {
+          "mean": 0.00045473792615006395,
+          "min": {
+            "year": 2014,
+            "value": 0.00017850178773209157
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008415303272097257
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 1.0261419246514796,
+          "min": {
+            "year": 2015,
+            "value": 0.9295443619284
+          },
+          "max": {
+            "year": 2019,
+            "value": 1.0802534539788555
+          }
+        }
+      }
+    },
+    "climatology_loyo": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.13076923076923078,
+          "top_1pct_catch_human": 0.1939799331103679,
+          "top_1pct_catch_lightning": 0.07738095238095238,
+          "pr_auc": 0.0022516497052734,
+          "pr_auc_over_base_rate": 6.008984496616063
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.10547504025764895,
+          "top_1pct_catch_human": 0.22784810126582278,
+          "top_1pct_catch_lightning": 0.040342298288508556,
+          "pr_auc": 0.0034484237237835,
+          "pr_auc_over_base_rate": 4.816290138025052
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.09778729478943611,
+          "top_1pct_catch_human": 0.19955156950672645,
+          "top_1pct_catch_lightning": 0.05144694533762058,
+          "pr_auc": 0.003308224270728212,
+          "pr_auc_over_base_rate": 4.096098778578578
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.12667946257197696,
+          "top_1pct_catch_human": 0.1916376306620209,
+          "top_1pct_catch_lightning": 0.04017857142857143,
+          "pr_auc": 0.0027912997070399935,
+          "pr_auc_over_base_rate": 9.293565404827012
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.13494809688581316,
+          "top_1pct_catch_human": 0.1901840490797546,
+          "top_1pct_catch_lightning": 0.034482758620689655,
+          "pr_auc": 0.0011492474713040365,
+          "pr_auc_over_base_rate": 6.898097476919883
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.12390924956369982,
+          "top_1pct_catch_human": 0.20689655172413793,
+          "top_1pct_catch_lightning": 0.05555555555555555,
+          "pr_auc": 0.0018239949423038732,
+          "pr_auc_over_base_rate": 5.5218247724816925
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14516129032258066,
+          "top_1pct_catch_human": 0.192,
+          "top_1pct_catch_lightning": 0.05357142857142857,
+          "pr_auc": 0.002798498158780273,
+          "pr_auc_over_base_rate": 8.699703262751456
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.06412005457025921,
+          "top_1pct_catch_human": 0.20105820105820105,
+          "top_1pct_catch_lightning": 0.014842300556586271,
+          "pr_auc": 0.0015980656726173104,
+          "pr_auc_over_base_rate": 3.7818496663919863
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.0912762520193861,
+          "top_1pct_catch_human": 0.2261904761904762,
+          "top_1pct_catch_lightning": 0.03811659192825112,
+          "pr_auc": 0.0033220375957544617,
+          "pr_auc_over_base_rate": 4.65476233419923
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.1157684630738523,
+          "top_1pct_catch_human": 0.199203187250996,
+          "top_1pct_catch_lightning": 0.03278688524590164,
+          "pr_auc": 0.0026300732266524443,
+          "pr_auc_over_base_rate": 9.106337191866764
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.1135894434823884,
+          "min": {
+            "year": 2017,
+            "value": 0.06412005457025921
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.14516129032258066
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.2028549699848504,
+          "min": {
+            "year": 2014,
+            "value": 0.1901840490797546
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.22784810126582278
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.043870428791406575,
+          "min": {
+            "year": 2017,
+            "value": 0.014842300556586271
+          },
+          "max": {
+            "year": 2010,
+            "value": 0.07738095238095238
+          }
+        },
+        "pr_auc": {
+          "mean": 0.0025121514474237506,
+          "min": {
+            "year": 2014,
+            "value": 0.0011492474713040365
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.0034484237237835
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 6.287751352265771,
+          "min": {
+            "year": 2017,
+            "value": 3.7818496663919863
+          },
+          "max": {
+            "year": 2013,
+            "value": 9.293565404827012
+          }
+        }
+      }
+    }
+  }
+}

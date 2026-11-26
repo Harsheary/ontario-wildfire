@@ -11,6 +11,13 @@ From the repository root, with `requirements.txt` installed in `.venv`, run in t
 .venv/bin/python build_labels.py
 .venv/bin/python build_fire_history.py
 .venv/bin/python build_static_features.py
+.venv/bin/python build_model_table.py
+.venv/bin/python build_model_table_v2.py
+.venv/bin/python build_baselines.py
+.venv/bin/python train_models.py --version v1 --threads 16
+.venv/bin/python ablate_models.py
+.venv/bin/python train_models.py --version v2 --threads 16
+.venv/bin/python train_models.py --version v3 --threads 16
 ```
 
 Raw inputs and generated Parquet files stay out of Git; source pins and build audit JSON are tracked.
@@ -62,3 +69,25 @@ Run `.venv/bin/python build_static_features.py` on the published grid. [data/sta
 - **Fuels:** intersect native 250 m CFS FBP 2014b pixels with the squares by projected area. Six grouped shares sum to one over the area assigned to those groups; `fuel_classified_share` reports that area's fraction of the full square. NoData, omitted slash (S1–S3), and wetlands of unknown FBP type are outside this denominator. They are not treated as water or known non-fuel.
 
 **Known temporal limitation:** these are fixed snapshots, not the state of the landscape in each label year. Post-2010 roads are knowingly used for early years; the same hindsight applies to other later snapshots. The 2014b fuel map uses historical burn scars and is not a pre-2010 snapshot.
+
+## Model table (assembly only)
+
+`build_model_table.py` writes `data/model_table.parquet` and `data/model_table.checks.json`. Weather and fire history retain their original feature date `D`; static features join by `cell_id`; only the three `target_*` labels come from `D+1`. Feature dates are May 1–October 30, and `year`, `doy` and `split` are based on `D`. The training partition is 2010–2019; the holdout is 2020–2024. The build verifies exact keys, zero nulls and 10,000 randomly sampled next-day targets against `labels.parquet`. It does not fit a model.
+
+`build_model_table_v2.py` preserves the v1 rows and appends 17 weather features, without fitting a model. It reconstructs April warm-up weather from the native daily-driver cache and the saved grid overlap weights, then checks that it reproduces May 1–12 weather. Rain windows and extrema include feature day `D`; moisture-code changes subtract `D−1` or `D−3`. The three anomalies use numeric day-of-year ±7 within the available April–October seasons of 2010–2019, excluding the row's own year for training rows. These are retrospective cross-year normals, not as-of-date fits. `data/model_table_v2.checks.json` records zero-null checks and a direct 10,000-row recomputation, including 1,000 May 1–7 rows.
+
+## Training-year baselines
+
+`build_baselines.py` scores FWI, five-year 3×3 all-fire history, seeded random scores, and per-cell leave-one-year-out climatology on 2010–2019. It writes annual metrics, unweighted yearly means, and yearly extrema to `data/baselines.checks.json`. Top-1% catch uses the same 95 daily cells for all three targets (ties favor lower `cell_id`); PR-AUC is non-interpolated average precision for `target_any` over each year's cell-days. The reader takes only the training prefix of the mixed 2019/2020 row group. Parquet pages can span the boundary, but the returned batches contain only training rows.
+
+## First models
+
+`train_models.py` writes `data/models_v1.checks.json` for ten leave-one-year-out folds on 2010–2019. The input reader applies the year cutoff from the Parquet footer before requesting any row batches. LightGBM selects its round count by log-loss on the latest of the nine training years, fitting on the other eight, then refits from scratch on all nine before scoring the excluded year. Logistic regression fits its scaler only on the nine training years. Both use all weather, history and static features except `noon_utc_hour`, and neither weights classes. Brier score uses the predicted probability; climatology uses the per-cell rate over the other nine years.
+
+`ablate_models.py` writes `data/models_v1.ablation.checks.json` with the v1 LightGBM human-access, fuel, and combined feature drops.
+
+Run `.venv/bin/python train_models.py --version v2` for the 17 extra weather features, the LightGBM fuel-drop ablation, and paired catch comparisons against v1. The three anomaly columns are recomputed from weather within each fitting split, excluding the row's own year, so neither the scored year nor the inner early-stopping year contributes to the corresponding normal. The report is `data/models_v2.checks.json`.
+
+Run `.venv/bin/python train_models.py --version v3` to fit separate human- and lightning-fire LightGBM models on the same v2 folds and features. Both select their own stopping round and refit on all nine training years. Their probability sum ranks cells; it is capped at one only for Brier scoring against `target_any`. The report, `data/models_v3.checks.json`, pairs results with the saved v2 single-target and climatology scores.
+
+Selected model: v2 single-target `target_any` LightGBM. The v3 cause split was not selected.

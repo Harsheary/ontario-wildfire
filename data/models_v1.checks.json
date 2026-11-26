@@ -1,0 +1,1410 @@
+{
+  "source": "data/model_table.parquet",
+  "year_filter": "year <= 2019",
+  "years": [
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "rows_read": 17346570,
+  "row_groups_read": 229,
+  "partial_row_groups": [
+    {
+      "row_group": 228,
+      "training_prefix_rows": 56874,
+      "total_rows": 75832
+    }
+  ],
+  "features": [
+    "temperature",
+    "RH",
+    "wind",
+    "rain_24h",
+    "FFMC",
+    "DMC",
+    "DC",
+    "ISI",
+    "BUI",
+    "FWI",
+    "fire_count_cell_30d_all",
+    "fire_count_cell_30d_human",
+    "fire_count_cell_30d_lightning",
+    "fire_count_3x3_30d_all",
+    "fire_count_3x3_30d_human",
+    "fire_count_3x3_30d_lightning",
+    "fire_count_cell_365d_all",
+    "fire_count_cell_365d_human",
+    "fire_count_cell_365d_lightning",
+    "fire_count_3x3_365d_all",
+    "fire_count_3x3_365d_human",
+    "fire_count_3x3_365d_lightning",
+    "fire_count_cell_5y_all",
+    "fire_count_cell_5y_human",
+    "fire_count_cell_5y_lightning",
+    "fire_count_3x3_5y_all",
+    "fire_count_3x3_5y_human",
+    "fire_count_3x3_5y_lightning",
+    "days_since_last_fire_human",
+    "days_since_last_fire_lightning",
+    "road_length_km",
+    "road_rail_1km_share",
+    "nearest_community_km",
+    "population_per_km2",
+    "pop_missing",
+    "census_da_coverage_share",
+    "provincial_park_point_count",
+    "campground_point_count",
+    "recreation_point_count",
+    "provincial_park_share",
+    "fuel_conifer_share",
+    "fuel_deciduous_share",
+    "fuel_mixedwood_share",
+    "fuel_open_grass_share",
+    "fuel_non_fuel_share",
+    "fuel_water_share",
+    "fuel_classified_share"
+  ],
+  "top_cells_per_day": 95,
+  "top_k_ties": "cell_id ascending",
+  "pr_auc_method": "Non-interpolated average precision for target_any over all cell-days in each year",
+  "brier_method": "Mean squared probability error for target_any over all cell-days in each year",
+  "lightgbm_parameters": {
+    "objective": "binary",
+    "metric": "binary_logloss",
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "min_data_in_leaf": 200,
+    "feature_fraction": 0.8,
+    "is_unbalance": false,
+    "scale_pos_weight": 1.0,
+    "seed": 42,
+    "verbosity": -1,
+    "num_threads": 16,
+    "force_col_wise": true,
+    "num_boost_round": 1000,
+    "early_stopping_rounds": 50
+  },
+  "logistic_parameters": {
+    "solver": "newton-cholesky",
+    "l1_ratio": 0.0,
+    "C": 1.0,
+    "class_weight": null,
+    "max_iter": 100,
+    "tol": 1e-08,
+    "penalty": "L2",
+    "standardization": "training fold only"
+  },
+  "folds": {
+    "2010": {
+      "training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 650,
+        "target_human": 299,
+        "target_lightning": 336
+      },
+      "base_rate": 0.0003747138483285168,
+      "lightgbm": {
+        "best_iteration": 81,
+        "refit_iterations": 81,
+        "early_stopping_log_loss": 0.0022831454003093008,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2011": {
+      "training_years": [
+        2010,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 1242,
+        "target_human": 395,
+        "target_lightning": 818
+      },
+      "base_rate": 0.0007159916917292583,
+      "lightgbm": {
+        "best_iteration": 91,
+        "refit_iterations": 91,
+        "early_stopping_log_loss": 0.0022922617302478,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2012": {
+      "training_years": [
+        2010,
+        2011,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 1401,
+        "target_human": 446,
+        "target_lightning": 933
+      },
+      "base_rate": 0.0008076524638588493,
+      "lightgbm": {
+        "best_iteration": 94,
+        "refit_iterations": 94,
+        "early_stopping_log_loss": 0.002305976557205655,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2013": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 521,
+        "target_human": 287,
+        "target_lightning": 224
+      },
+      "base_rate": 0.0003003475615063958,
+      "lightgbm": {
+        "best_iteration": 75,
+        "refit_iterations": 75,
+        "early_stopping_log_loss": 0.0022810698339476754,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2014": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 289,
+        "target_human": 163,
+        "target_lightning": 116
+      },
+      "base_rate": 0.0001666035417952944,
+      "lightgbm": {
+        "best_iteration": 79,
+        "refit_iterations": 79,
+        "early_stopping_log_loss": 0.0023011666557490274,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2015": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 573,
+        "target_human": 261,
+        "target_lightning": 306
+      },
+      "base_rate": 0.00033032466937267714,
+      "lightgbm": {
+        "best_iteration": 92,
+        "refit_iterations": 92,
+        "early_stopping_log_loss": 0.002303518598726626,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2016": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 558,
+        "target_human": 375,
+        "target_lightning": 168
+      },
+      "base_rate": 0.0003216774267189421,
+      "lightgbm": {
+        "best_iteration": 109,
+        "refit_iterations": 109,
+        "early_stopping_log_loss": 0.002297809665204699,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2017": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 733,
+        "target_human": 189,
+        "target_lightning": 539
+      },
+      "base_rate": 0.0004225619243458505,
+      "lightgbm": {
+        "best_iteration": 75,
+        "refit_iterations": 75,
+        "early_stopping_log_loss": 0.002310350644940357,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2018": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 1238,
+        "target_human": 336,
+        "target_lightning": 892
+      },
+      "base_rate": 0.000713685760354929,
+      "lightgbm": {
+        "best_iteration": 97,
+        "refit_iterations": 97,
+        "early_stopping_log_loss": 0.0022944823625921456,
+        "early_stopping_year": 2019
+      },
+      "logistic_iterations": 12
+    },
+    "2019": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 501,
+        "target_human": 251,
+        "target_lightning": 244
+      },
+      "base_rate": 0.00028881790463474913,
+      "lightgbm": {
+        "best_iteration": 97,
+        "refit_iterations": 97,
+        "early_stopping_log_loss": 0.005077209310672056,
+        "early_stopping_year": 2018
+      },
+      "logistic_iterations": 12
+    }
+  },
+  "models": {
+    "lightgbm": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.15076923076923077,
+          "top_1pct_catch_human": 0.21070234113712374,
+          "top_1pct_catch_lightning": 0.10119047619047619,
+          "pr_auc": 0.00569925430451913,
+          "pr_auc_over_base_rate": 15.209617498637295,
+          "brier_score": 0.0003886110677295561
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.11674718196457327,
+          "top_1pct_catch_human": 0.15949367088607594,
+          "top_1pct_catch_lightning": 0.0941320293398533,
+          "pr_auc": 0.006050388864111876,
+          "pr_auc_over_base_rate": 8.450361832410398,
+          "brier_score": 0.0007397149169565842
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.09493219129193434,
+          "top_1pct_catch_human": 0.11659192825112108,
+          "top_1pct_catch_lightning": 0.08467309753483387,
+          "pr_auc": 0.009296509478352902,
+          "pr_auc_over_base_rate": 11.510531935896653,
+          "brier_score": 0.0008150661853566092
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.11516314779270634,
+          "top_1pct_catch_human": 0.17770034843205576,
+          "top_1pct_catch_lightning": 0.03125,
+          "pr_auc": 0.0029727972108301295,
+          "pr_auc_over_base_rate": 9.897856989149634,
+          "brier_score": 0.00031434393414920273
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.15570934256055363,
+          "top_1pct_catch_human": 0.1901840490797546,
+          "top_1pct_catch_lightning": 0.07758620689655173,
+          "pr_auc": 0.0021903556265614813,
+          "pr_auc_over_base_rate": 13.147113218353839,
+          "brier_score": 0.00017769628556829481
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.17277486910994763,
+          "top_1pct_catch_human": 0.23371647509578544,
+          "top_1pct_catch_lightning": 0.11437908496732026,
+          "pr_auc": 0.00515778609795585,
+          "pr_auc_over_base_rate": 15.614292773685516,
+          "brier_score": 0.0003356528115839104
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14336917562724014,
+          "top_1pct_catch_human": 0.176,
+          "top_1pct_catch_lightning": 0.08333333333333333,
+          "pr_auc": 0.005285463054589462,
+          "pr_auc_over_base_rate": 16.43094173097669,
+          "brier_score": 0.0003498223922665113
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.08458390177353342,
+          "top_1pct_catch_human": 0.18518518518518517,
+          "top_1pct_catch_lightning": 0.04823747680890538,
+          "pr_auc": 0.0036557828616561906,
+          "pr_auc_over_base_rate": 8.651472484927616,
+          "brier_score": 0.0004349362626244052
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.12116316639741519,
+          "top_1pct_catch_human": 0.24404761904761904,
+          "top_1pct_catch_lightning": 0.07286995515695067,
+          "pr_auc": 0.008444127280678155,
+          "pr_auc_over_base_rate": 11.831716071340328,
+          "brier_score": 0.0007185340083500993
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.13572854291417166,
+          "top_1pct_catch_human": 0.21115537848605578,
+          "top_1pct_catch_lightning": 0.06147540983606557,
+          "pr_auc": 0.0034744745893069023,
+          "pr_auc_over_base_rate": 12.029983368589507,
+          "brier_score": 0.00030344747268094054
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.12909407502013065,
+          "min": {
+            "year": 2017,
+            "value": 0.08458390177353342
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.17277486910994763
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.19047769956007765,
+          "min": {
+            "year": 2012,
+            "value": 0.11659192825112108
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.24404761904761904
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.07691270700642903,
+          "min": {
+            "year": 2013,
+            "value": 0.03125
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.11437908496732026
+          }
+        },
+        "pr_auc": {
+          "mean": 0.005222693936856208,
+          "min": {
+            "year": 2014,
+            "value": 0.0021903556265614813
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.009296509478352902
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 12.277388790396747,
+          "min": {
+            "year": 2011,
+            "value": 8.450361832410398
+          },
+          "max": {
+            "year": 2016,
+            "value": 16.43094173097669
+          }
+        },
+        "brier_score": {
+          "mean": 0.00045778253372661136,
+          "min": {
+            "year": 2014,
+            "value": 0.00017769628556829481
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008150661853566092
+          }
+        }
+      }
+    },
+    "logistic_regression": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.13692307692307693,
+          "top_1pct_catch_human": 0.19732441471571907,
+          "top_1pct_catch_lightning": 0.08630952380952381,
+          "pr_auc": 0.006427900148001227,
+          "pr_auc_over_base_rate": 17.154156903125177,
+          "brier_score": 0.00037383179206785556
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.10950080515297907,
+          "top_1pct_catch_human": 0.189873417721519,
+          "top_1pct_catch_lightning": 0.06601466992665037,
+          "pr_auc": 0.006294392341334579,
+          "pr_auc_over_base_rate": 8.791152766217726,
+          "brier_score": 0.0007156890769510936
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.11563169164882227,
+          "top_1pct_catch_human": 0.16143497757847533,
+          "top_1pct_catch_lightning": 0.09110396570203644,
+          "pr_auc": 0.0103557793438108,
+          "pr_auc_over_base_rate": 12.822073611132629,
+          "brier_score": 0.0008041684715560655
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.12476007677543186,
+          "top_1pct_catch_human": 0.18466898954703834,
+          "top_1pct_catch_lightning": 0.04017857142857143,
+          "pr_auc": 0.003198542972635206,
+          "pr_auc_over_base_rate": 10.649472086914525,
+          "brier_score": 0.0003005169547470461
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.13494809688581316,
+          "top_1pct_catch_human": 0.17177914110429449,
+          "top_1pct_catch_lightning": 0.04310344827586207,
+          "pr_auc": 0.0024922774945644747,
+          "pr_auc_over_base_rate": 14.959330802383143,
+          "brier_score": 0.00016700555313381492
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.16230366492146597,
+          "top_1pct_catch_human": 0.2222222222222222,
+          "top_1pct_catch_lightning": 0.11437908496732026,
+          "pr_auc": 0.0048659244669506845,
+          "pr_auc_over_base_rate": 14.730732876208156,
+          "brier_score": 0.00032951391214099476
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.17025089605734767,
+          "top_1pct_catch_human": 0.2,
+          "top_1pct_catch_lightning": 0.1130952380952381,
+          "pr_auc": 0.009512119379367927,
+          "pr_auc_over_base_rate": 29.570366426982492,
+          "brier_score": 0.00032223587821669385
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.0941336971350614,
+          "top_1pct_catch_human": 0.21693121693121692,
+          "top_1pct_catch_lightning": 0.05009276437847866,
+          "pr_auc": 0.0045125055011898535,
+          "pr_auc_over_base_rate": 10.678921221251688,
+          "brier_score": 0.00042160290509550373
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.11873990306946688,
+          "top_1pct_catch_human": 0.23809523809523808,
+          "top_1pct_catch_lightning": 0.07062780269058296,
+          "pr_auc": 0.006727523516599597,
+          "pr_auc_over_base_rate": 9.426450533710911,
+          "brier_score": 0.0007158154219088041
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.15768463073852296,
+          "top_1pct_catch_human": 0.24302788844621515,
+          "top_1pct_catch_lightning": 0.07377049180327869,
+          "pr_auc": 0.005035200063088215,
+          "pr_auc_over_base_rate": 17.43382242681919,
+          "brier_score": 0.0002885231319408109
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.1324876539307988,
+          "min": {
+            "year": 2017,
+            "value": 0.0941336971350614
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.17025089605734767
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.20253575063619386,
+          "min": {
+            "year": 2012,
+            "value": 0.16143497757847533
+          },
+          "max": {
+            "year": 2019,
+            "value": 0.24302788844621515
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.07486755610775428,
+          "min": {
+            "year": 2013,
+            "value": 0.04017857142857143
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.11437908496732026
+          }
+        },
+        "pr_auc": {
+          "mean": 0.005942216522754257,
+          "min": {
+            "year": 2014,
+            "value": 0.0024922774945644747
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0103557793438108
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 14.621647965474564,
+          "min": {
+            "year": 2011,
+            "value": 8.791152766217726
+          },
+          "max": {
+            "year": 2016,
+            "value": 29.570366426982492
+          }
+        },
+        "brier_score": {
+          "mean": 0.0004438903097758683,
+          "min": {
+            "year": 2014,
+            "value": 0.00016700555313381492
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008041684715560655
+          }
+        }
+      }
+    },
+    "climatology_loyo": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.13076923076923078,
+          "top_1pct_catch_human": 0.1939799331103679,
+          "top_1pct_catch_lightning": 0.07738095238095238,
+          "pr_auc": 0.0022516497052734,
+          "pr_auc_over_base_rate": 6.008984496616063,
+          "brier_score": 0.0003743266484910544
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.10547504025764895,
+          "top_1pct_catch_human": 0.22784810126582278,
+          "top_1pct_catch_lightning": 0.040342298288508556,
+          "pr_auc": 0.0034484237237835,
+          "pr_auc_over_base_rate": 4.816290138025052,
+          "brier_score": 0.000714522308015015
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.09778729478943611,
+          "top_1pct_catch_human": 0.19955156950672645,
+          "top_1pct_catch_lightning": 0.05144694533762058,
+          "pr_auc": 0.003308224270728212,
+          "pr_auc_over_base_rate": 4.096098778578578,
+          "brier_score": 0.0008060942139705803
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.12667946257197696,
+          "top_1pct_catch_human": 0.1916376306620209,
+          "top_1pct_catch_lightning": 0.04017857142857143,
+          "pr_auc": 0.0027912997070399935,
+          "pr_auc_over_base_rate": 9.293565404827012,
+          "brier_score": 0.00030009519712860414
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.13494809688581316,
+          "top_1pct_catch_human": 0.1901840490797546,
+          "top_1pct_catch_lightning": 0.034482758620689655,
+          "pr_auc": 0.0011492474713040365,
+          "pr_auc_over_base_rate": 6.898097476919883,
+          "brier_score": 0.00016712581043905526
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.12390924956369982,
+          "top_1pct_catch_human": 0.20689655172413793,
+          "top_1pct_catch_lightning": 0.05555555555555555,
+          "pr_auc": 0.0018239949423038732,
+          "pr_auc_over_base_rate": 5.5218247724816925,
+          "brier_score": 0.00033020749047449777
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14516129032258066,
+          "top_1pct_catch_human": 0.192,
+          "top_1pct_catch_lightning": 0.05357142857142857,
+          "pr_auc": 0.002798498158780273,
+          "pr_auc_over_base_rate": 8.699703262751456,
+          "brier_score": 0.00032126720334755264
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.06412005457025921,
+          "top_1pct_catch_human": 0.20105820105820105,
+          "top_1pct_catch_lightning": 0.014842300556586271,
+          "pr_auc": 0.0015980656726173104,
+          "pr_auc_over_base_rate": 3.7818496663919863,
+          "brier_score": 0.0004225023042824887
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.0912762520193861,
+          "top_1pct_catch_human": 0.2261904761904762,
+          "top_1pct_catch_lightning": 0.03811659192825112,
+          "pr_auc": 0.0033220375957544617,
+          "pr_auc_over_base_rate": 4.65476233419923,
+          "brier_score": 0.0007122866139756051
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.1157684630738523,
+          "top_1pct_catch_human": 0.199203187250996,
+          "top_1pct_catch_lightning": 0.03278688524590164,
+          "pr_auc": 0.0026300732266524443,
+          "pr_auc_over_base_rate": 9.106337191866764,
+          "brier_score": 0.000288638733315827
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.1135894434823884,
+          "min": {
+            "year": 2017,
+            "value": 0.06412005457025921
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.14516129032258066
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.2028549699848504,
+          "min": {
+            "year": 2014,
+            "value": 0.1901840490797546
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.22784810126582278
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.043870428791406575,
+          "min": {
+            "year": 2017,
+            "value": 0.014842300556586271
+          },
+          "max": {
+            "year": 2010,
+            "value": 0.07738095238095238
+          }
+        },
+        "pr_auc": {
+          "mean": 0.0025121514474237506,
+          "min": {
+            "year": 2014,
+            "value": 0.0011492474713040365
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.0034484237237835
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 6.287751352265771,
+          "min": {
+            "year": 2017,
+            "value": 3.7818496663919863
+          },
+          "max": {
+            "year": 2013,
+            "value": 9.293565404827012
+          }
+        },
+        "brier_score": {
+          "mean": 0.000443706652344028,
+          "min": {
+            "year": 2014,
+            "value": 0.00016712581043905526
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008060942139705803
+          }
+        }
+      }
+    }
+  },
+  "lightgbm_climatology_top_1pct_any_wins": {
+    "count": 7,
+    "years": [
+      2010,
+      2011,
+      2014,
+      2015,
+      2017,
+      2018,
+      2019
+    ]
+  },
+  "lightgbm_gain_by_fold": {
+    "2010": {
+      "temperature": 17733.57423400879,
+      "RH": 7325.951016426086,
+      "wind": 3807.041615486145,
+      "rain_24h": 1951.8058195114136,
+      "FFMC": 5195.595450401306,
+      "DMC": 41587.00136375427,
+      "DC": 10877.491529464722,
+      "ISI": 1608.7547912597656,
+      "BUI": 37422.66096496582,
+      "FWI": 8389.364692687988,
+      "fire_count_cell_30d_all": 14426.463428497314,
+      "fire_count_cell_30d_human": 24024.172434806824,
+      "fire_count_cell_30d_lightning": 443.98700523376465,
+      "fire_count_3x3_30d_all": 21501.18511390686,
+      "fire_count_3x3_30d_human": 337.5522994995117,
+      "fire_count_3x3_30d_lightning": 2528.4453830718994,
+      "fire_count_cell_365d_all": 149.9332981109619,
+      "fire_count_cell_365d_human": 1395.0446968078613,
+      "fire_count_cell_365d_lightning": 107.52520084381104,
+      "fire_count_3x3_365d_all": 4946.7176332473755,
+      "fire_count_3x3_365d_human": 530.3163042068481,
+      "fire_count_3x3_365d_lightning": 5754.149852752686,
+      "fire_count_cell_5y_all": 10186.700954437256,
+      "fire_count_cell_5y_human": 14748.939041137695,
+      "fire_count_cell_5y_lightning": 3515.599165916443,
+      "fire_count_3x3_5y_all": 30637.19436454773,
+      "fire_count_3x3_5y_human": 30897.21667957306,
+      "fire_count_3x3_5y_lightning": 1136.0216913223267,
+      "days_since_last_fire_human": 17500.017745018005,
+      "days_since_last_fire_lightning": 11258.80627155304,
+      "road_length_km": 1074.716495513916,
+      "road_rail_1km_share": 1766.8270139694214,
+      "nearest_community_km": 9065.366534233093,
+      "population_per_km2": 1896.5569133758545,
+      "pop_missing": 282.65139865875244,
+      "census_da_coverage_share": 918.2440052032471,
+      "provincial_park_point_count": 47.34379959106445,
+      "campground_point_count": 697.8719882965088,
+      "recreation_point_count": 774.4284029006958,
+      "provincial_park_share": 760.1167087554932,
+      "fuel_conifer_share": 2991.380889892578,
+      "fuel_deciduous_share": 2077.0440130233765,
+      "fuel_mixedwood_share": 1786.9150981903076,
+      "fuel_open_grass_share": 1640.4535989761353,
+      "fuel_non_fuel_share": 402.1033010482788,
+      "fuel_water_share": 6401.822909355164,
+      "fuel_classified_share": 1264.0112047195435
+    },
+    "2011": {
+      "temperature": 35160.59558010101,
+      "RH": 9553.958322525024,
+      "wind": 4571.613392829895,
+      "rain_24h": 2312.314486503601,
+      "FFMC": 7669.429902076721,
+      "DMC": 46326.864082336426,
+      "DC": 6671.681420326233,
+      "ISI": 11680.855681419373,
+      "BUI": 30111.31056690216,
+      "FWI": 5160.843628883362,
+      "fire_count_cell_30d_all": 10075.812958717346,
+      "fire_count_cell_30d_human": 25131.9072971344,
+      "fire_count_cell_30d_lightning": 926.8756275177002,
+      "fire_count_3x3_30d_all": 18552.943303108215,
+      "fire_count_3x3_30d_human": 619.6032047271729,
+      "fire_count_3x3_30d_lightning": 1317.4530124664307,
+      "fire_count_cell_365d_all": 446.1169013977051,
+      "fire_count_cell_365d_human": 352.36609840393066,
+      "fire_count_cell_365d_lightning": 19.257400512695312,
+      "fire_count_3x3_365d_all": 4277.695516586304,
+      "fire_count_3x3_365d_human": 918.0761957168579,
+      "fire_count_3x3_365d_lightning": 10176.622253417969,
+      "fire_count_cell_5y_all": 13310.231415748596,
+      "fire_count_cell_5y_human": 36532.067863464355,
+      "fire_count_cell_5y_lightning": 1155.4923334121704,
+      "fire_count_3x3_5y_all": 22546.220916748047,
+      "fire_count_3x3_5y_human": 7403.247857093811,
+      "fire_count_3x3_5y_lightning": 6055.48957157135,
+      "days_since_last_fire_human": 18532.481727600098,
+      "days_since_last_fire_lightning": 13111.512652397156,
+      "road_length_km": 1452.3026962280273,
+      "road_rail_1km_share": 1499.6295080184937,
+      "nearest_community_km": 6738.898216247559,
+      "population_per_km2": 3104.13729763031,
+      "pop_missing": 0.0,
+      "census_da_coverage_share": 505.6260004043579,
+      "provincial_park_point_count": 272.02730560302734,
+      "campground_point_count": 572.7532987594604,
+      "recreation_point_count": 4234.365186691284,
+      "provincial_park_share": 817.8556880950928,
+      "fuel_conifer_share": 3716.829894065857,
+      "fuel_deciduous_share": 1647.8222818374634,
+      "fuel_mixedwood_share": 1449.294298171997,
+      "fuel_open_grass_share": 1619.2039909362793,
+      "fuel_non_fuel_share": 568.0456037521362,
+      "fuel_water_share": 5524.969198226929,
+      "fuel_classified_share": 1945.3343753814697
+    },
+    "2012": {
+      "temperature": 16085.239372253418,
+      "RH": 68416.76631641388,
+      "wind": 3875.6280097961426,
+      "rain_24h": 3134.622654914856,
+      "FFMC": 3423.739547729492,
+      "DMC": 32579.630621910095,
+      "DC": 9025.507591247559,
+      "ISI": 2411.6970920562744,
+      "BUI": 32730.72010231018,
+      "FWI": 6334.853157997131,
+      "fire_count_cell_30d_all": 18561.05136680603,
+      "fire_count_cell_30d_human": 7222.152381896973,
+      "fire_count_cell_30d_lightning": 1079.2737140655518,
+      "fire_count_3x3_30d_all": 20877.920946121216,
+      "fire_count_3x3_30d_human": 512.6762027740479,
+      "fire_count_3x3_30d_lightning": 1361.2415008544922,
+      "fire_count_cell_365d_all": 2964.5702753067017,
+      "fire_count_cell_365d_human": 534.5648994445801,
+      "fire_count_cell_365d_lightning": 1209.5823802947998,
+      "fire_count_3x3_365d_all": 3702.6745824813843,
+      "fire_count_3x3_365d_human": 65811.62731266022,
+      "fire_count_3x3_365d_lightning": 349.0828037261963,
+      "fire_count_cell_5y_all": 45608.09736251831,
+      "fire_count_cell_5y_human": 11124.464639663696,
+      "fire_count_cell_5y_lightning": 164.77490043640137,
+      "fire_count_3x3_5y_all": 211106.5145483017,
+      "fire_count_3x3_5y_human": 4324.73689365387,
+      "fire_count_3x3_5y_lightning": 2231.6283407211304,
+      "days_since_last_fire_human": 21742.57241821289,
+      "days_since_last_fire_lightning": 12113.246942520142,
+      "road_length_km": 1338.8531093597412,
+      "road_rail_1km_share": 2352.9683952331543,
+      "nearest_community_km": 4879.951313972473,
+      "population_per_km2": 3094.5910968780518,
+      "pop_missing": 123.12179851531982,
+      "census_da_coverage_share": 768.635401725769,
+      "provincial_park_point_count": 181.28239822387695,
+      "campground_point_count": 807.0534019470215,
+      "recreation_point_count": 471.30660247802734,
+      "provincial_park_share": 733.4948978424072,
+      "fuel_conifer_share": 4476.058989524841,
+      "fuel_deciduous_share": 1977.2453002929688,
+      "fuel_mixedwood_share": 2162.894284248352,
+      "fuel_open_grass_share": 3107.3301935195923,
+      "fuel_non_fuel_share": 646.5869998931885,
+      "fuel_water_share": 14799.671139717102,
+      "fuel_classified_share": 1368.343560218811
+    },
+    "2013": {
+      "temperature": 18675.849473953247,
+      "RH": 22393.18423652649,
+      "wind": 3072.3796129226685,
+      "rain_24h": 1904.0673055648804,
+      "FFMC": 4480.754470825195,
+      "DMC": 30632.259344100952,
+      "DC": 5306.920408248901,
+      "ISI": 1344.3771982192993,
+      "BUI": 44297.11834526062,
+      "FWI": 2778.3315935134888,
+      "fire_count_cell_30d_all": 20298.798321723938,
+      "fire_count_cell_30d_human": 13366.637396812439,
+      "fire_count_cell_30d_lightning": 2719.0088901519775,
+      "fire_count_3x3_30d_all": 22028.29747581482,
+      "fire_count_3x3_30d_human": 497.63511085510254,
+      "fire_count_3x3_30d_lightning": 1235.6977863311768,
+      "fire_count_cell_365d_all": 657.4612998962402,
+      "fire_count_cell_365d_human": 767.5700855255127,
+      "fire_count_cell_365d_lightning": 54.41859817504883,
+      "fire_count_3x3_365d_all": 7580.389514923096,
+      "fire_count_3x3_365d_human": 566.6874952316284,
+      "fire_count_3x3_365d_lightning": 8425.636863708496,
+      "fire_count_cell_5y_all": 4435.260540008545,
+      "fire_count_cell_5y_human": 10149.825967788696,
+      "fire_count_cell_5y_lightning": 296.2332954406738,
+      "fire_count_3x3_5y_all": 25833.256028175354,
+      "fire_count_3x3_5y_human": 4503.2252197265625,
+      "fire_count_3x3_5y_lightning": 1284.4029111862183,
+      "days_since_last_fire_human": 8092.5618324279785,
+      "days_since_last_fire_lightning": 14027.283237457275,
+      "road_length_km": 1150.2151927947998,
+      "road_rail_1km_share": 1843.7294921875,
+      "nearest_community_km": 6196.960298538208,
+      "population_per_km2": 1505.907202720642,
+      "pop_missing": 40.6442985534668,
+      "census_da_coverage_share": 652.3779010772705,
+      "provincial_park_point_count": 238.143404006958,
+      "campground_point_count": 829.9528961181641,
+      "recreation_point_count": 1539.613208770752,
+      "provincial_park_share": 554.5107154846191,
+      "fuel_conifer_share": 3263.7349882125854,
+      "fuel_deciduous_share": 2627.5710887908936,
+      "fuel_mixedwood_share": 3812.0436782836914,
+      "fuel_open_grass_share": 4405.92352771759,
+      "fuel_non_fuel_share": 154.94309997558594,
+      "fuel_water_share": 5964.506579399109,
+      "fuel_classified_share": 1387.2991952896118
+    },
+    "2014": {
+      "temperature": 17221.823994636536,
+      "RH": 9259.575637817383,
+      "wind": 3755.0822954177856,
+      "rain_24h": 1973.0904989242554,
+      "FFMC": 2834.837905883789,
+      "DMC": 42380.666420936584,
+      "DC": 5209.513199806213,
+      "ISI": 2065.0449085235596,
+      "BUI": 37814.81658554077,
+      "FWI": 4981.016494750977,
+      "fire_count_cell_30d_all": 7536.132148742676,
+      "fire_count_cell_30d_human": 25452.150590896606,
+      "fire_count_cell_30d_lightning": 245.50100708007812,
+      "fire_count_3x3_30d_all": 19279.30631160736,
+      "fire_count_3x3_30d_human": 268.75159645080566,
+      "fire_count_3x3_30d_lightning": 1627.3181047439575,
+      "fire_count_cell_365d_all": 415.46879863739014,
+      "fire_count_cell_365d_human": 1432.4654245376587,
+      "fire_count_cell_365d_lightning": 0.0,
+      "fire_count_3x3_365d_all": 2524.7563247680664,
+      "fire_count_3x3_365d_human": 795.9400043487549,
+      "fire_count_3x3_365d_lightning": 2907.636381149292,
+      "fire_count_cell_5y_all": 7933.048494338989,
+      "fire_count_cell_5y_human": 26337.603678703308,
+      "fire_count_cell_5y_lightning": 0.0,
+      "fire_count_3x3_5y_all": 28996.758460998535,
+      "fire_count_3x3_5y_human": 4476.881514549255,
+      "fire_count_3x3_5y_lightning": 2205.066921234131,
+      "days_since_last_fire_human": 26584.870282173157,
+      "days_since_last_fire_lightning": 10144.369588851929,
+      "road_length_km": 1882.5844039916992,
+      "road_rail_1km_share": 1721.0021114349365,
+      "nearest_community_km": 6148.859499931335,
+      "population_per_km2": 1870.1417818069458,
+      "pop_missing": 48.67219924926758,
+      "census_da_coverage_share": 643.3754959106445,
+      "provincial_park_point_count": 17.042499542236328,
+      "campground_point_count": 883.0212182998657,
+      "recreation_point_count": 1716.507580757141,
+      "provincial_park_share": 624.1529026031494,
+      "fuel_conifer_share": 2967.4808082580566,
+      "fuel_deciduous_share": 2837.058187484741,
+      "fuel_mixedwood_share": 2014.8578042984009,
+      "fuel_open_grass_share": 2197.7740001678467,
+      "fuel_non_fuel_share": 391.9986047744751,
+      "fuel_water_share": 5420.543200492859,
+      "fuel_classified_share": 703.6616010665894
+    },
+    "2015": {
+      "temperature": 21303.70631504059,
+      "RH": 8456.604244232178,
+      "wind": 3779.376703262329,
+      "rain_24h": 3592.028685569763,
+      "FFMC": 2500.605195045471,
+      "DMC": 37038.588788986206,
+      "DC": 5959.0789976119995,
+      "ISI": 1417.675591468811,
+      "BUI": 36225.97845363617,
+      "FWI": 4533.299605369568,
+      "fire_count_cell_30d_all": 16749.08397960663,
+      "fire_count_cell_30d_human": 3807.904004096985,
+      "fire_count_cell_30d_lightning": 1368.217025756836,
+      "fire_count_3x3_30d_all": 22858.222107887268,
+      "fire_count_3x3_30d_human": 3907.924708366394,
+      "fire_count_3x3_30d_lightning": 1564.1072826385498,
+      "fire_count_cell_365d_all": 18088.942110061646,
+      "fire_count_cell_365d_human": 2553.840684890747,
+      "fire_count_cell_365d_lightning": 207.25609588623047,
+      "fire_count_3x3_365d_all": 6468.499761581421,
+      "fire_count_3x3_365d_human": 1175.0794010162354,
+      "fire_count_3x3_365d_lightning": 307.867693901062,
+      "fire_count_cell_5y_all": 9770.331260681152,
+      "fire_count_cell_5y_human": 13385.289077758789,
+      "fire_count_cell_5y_lightning": 323.3035955429077,
+      "fire_count_3x3_5y_all": 26304.87011528015,
+      "fire_count_3x3_5y_human": 4125.607606887817,
+      "fire_count_3x3_5y_lightning": 4148.580310821533,
+      "days_since_last_fire_human": 38858.230942726135,
+      "days_since_last_fire_lightning": 18585.47939968109,
+      "road_length_km": 1502.3107929229736,
+      "road_rail_1km_share": 2561.7429056167603,
+      "nearest_community_km": 4492.6224002838135,
+      "population_per_km2": 2500.5482025146484,
+      "pop_missing": 56.031901359558105,
+      "census_da_coverage_share": 1082.4921131134033,
+      "provincial_park_point_count": 0.0,
+      "campground_point_count": 504.0083990097046,
+      "recreation_point_count": 2483.80818939209,
+      "provincial_park_share": 1748.4380044937134,
+      "fuel_conifer_share": 3088.4411096572876,
+      "fuel_deciduous_share": 2733.454411506653,
+      "fuel_mixedwood_share": 3729.720311164856,
+      "fuel_open_grass_share": 3002.4007110595703,
+      "fuel_non_fuel_share": 564.8198986053467,
+      "fuel_water_share": 5089.594521522522,
+      "fuel_classified_share": 1309.6048049926758
+    },
+    "2016": {
+      "temperature": 123059.00118541718,
+      "RH": 25426.67445087433,
+      "wind": 5969.613334655762,
+      "rain_24h": 3140.2676362991333,
+      "FFMC": 6813.319021224976,
+      "DMC": 50592.055872917175,
+      "DC": 7750.8304052352905,
+      "ISI": 2197.914207458496,
+      "BUI": 37305.53326034546,
+      "FWI": 6047.04972743988,
+      "fire_count_cell_30d_all": 15808.711086273193,
+      "fire_count_cell_30d_human": 16278.409291267395,
+      "fire_count_cell_30d_lightning": 951.4686088562012,
+      "fire_count_3x3_30d_all": 20585.980180740356,
+      "fire_count_3x3_30d_human": 63.77079963684082,
+      "fire_count_3x3_30d_lightning": 2975.226704597473,
+      "fire_count_cell_365d_all": 632.5511016845703,
+      "fire_count_cell_365d_human": 2499.7432193756104,
+      "fire_count_cell_365d_lightning": 43.77511978149414,
+      "fire_count_3x3_365d_all": 4186.068247795105,
+      "fire_count_3x3_365d_human": 4739.812516212463,
+      "fire_count_3x3_365d_lightning": 4016.2127084732056,
+      "fire_count_cell_5y_all": 8113.695607185364,
+      "fire_count_cell_5y_human": 33081.26511001587,
+      "fire_count_cell_5y_lightning": 2046.8003635406494,
+      "fire_count_3x3_5y_all": 37076.411392211914,
+      "fire_count_3x3_5y_human": 25659.34766483307,
+      "fire_count_3x3_5y_lightning": 4731.0710191726685,
+      "days_since_last_fire_human": 17404.29882621765,
+      "days_since_last_fire_lightning": 13851.678855895996,
+      "road_length_km": 100261.93757629395,
+      "road_rail_1km_share": 4055.1415700912476,
+      "nearest_community_km": 51752.44183444977,
+      "population_per_km2": 123169.35747241974,
+      "pop_missing": 85.8281021118164,
+      "census_da_coverage_share": 982.3167858123779,
+      "provincial_park_point_count": 96.74099826812744,
+      "campground_point_count": 1260.782470703125,
+      "recreation_point_count": 3220.850251197815,
+      "provincial_park_share": 624.9931001663208,
+      "fuel_conifer_share": 43342.125635147095,
+      "fuel_deciduous_share": 8292.302557945251,
+      "fuel_mixedwood_share": 296511.0007944107,
+      "fuel_open_grass_share": 6490561.676768303,
+      "fuel_non_fuel_share": 704.2579526901245,
+      "fuel_water_share": 168880.94789791107,
+      "fuel_classified_share": 35469.80665111542
+    },
+    "2017": {
+      "temperature": 19242.86550617218,
+      "RH": 8699.1856508255,
+      "wind": 4430.725124359131,
+      "rain_24h": 1556.206699371338,
+      "FFMC": 2039.2377061843872,
+      "DMC": 45662.19637298584,
+      "DC": 5544.587788581848,
+      "ISI": 1691.7509021759033,
+      "BUI": 20973.485595703125,
+      "FWI": 4010.705687522888,
+      "fire_count_cell_30d_all": 13237.359952926636,
+      "fire_count_cell_30d_human": 18672.29652404785,
+      "fire_count_cell_30d_lightning": 671.2369918823242,
+      "fire_count_3x3_30d_all": 19782.084951400757,
+      "fire_count_3x3_30d_human": 470.6323986053467,
+      "fire_count_3x3_30d_lightning": 1089.7243022918701,
+      "fire_count_cell_365d_all": 1587.9789276123047,
+      "fire_count_cell_365d_human": 2316.4013385772705,
+      "fire_count_cell_365d_lightning": 16.52790069580078,
+      "fire_count_3x3_365d_all": 4466.695737838745,
+      "fire_count_3x3_365d_human": 663.4388980865479,
+      "fire_count_3x3_365d_lightning": 5108.983713150024,
+      "fire_count_cell_5y_all": 41746.6645526886,
+      "fire_count_cell_5y_human": 8323.70473575592,
+      "fire_count_cell_5y_lightning": 1287.9945783615112,
+      "fire_count_3x3_5y_all": 34748.07590389252,
+      "fire_count_3x3_5y_human": 3459.646894454956,
+      "fire_count_3x3_5y_lightning": 1721.5534963607788,
+      "days_since_last_fire_human": 25840.162304878235,
+      "days_since_last_fire_lightning": 11365.887774467468,
+      "road_length_km": 4404.758899688721,
+      "road_rail_1km_share": 3095.1985836029053,
+      "nearest_community_km": 4015.552834510803,
+      "population_per_km2": 2201.8414058685303,
+      "pop_missing": 55.8390007019043,
+      "census_da_coverage_share": 714.7515087127686,
+      "provincial_park_point_count": 390.7451000213623,
+      "campground_point_count": 790.4124069213867,
+      "recreation_point_count": 1448.7051315307617,
+      "provincial_park_share": 785.8409099578857,
+      "fuel_conifer_share": 4487.708117485046,
+      "fuel_deciduous_share": 1351.6702003479004,
+      "fuel_mixedwood_share": 2496.105604171753,
+      "fuel_open_grass_share": 2453.979413986206,
+      "fuel_non_fuel_share": 259.8147020339966,
+      "fuel_water_share": 4869.441774368286,
+      "fuel_classified_share": 694.52490234375
+    },
+    "2018": {
+      "temperature": 20611.385131835938,
+      "RH": 9630.948417663574,
+      "wind": 5044.355988502502,
+      "rain_24h": 2754.4807024002075,
+      "FFMC": 4929.7809801101685,
+      "DMC": 42160.87685585022,
+      "DC": 5967.814670562744,
+      "ISI": 2015.7566919326782,
+      "BUI": 21315.070328712463,
+      "FWI": 7332.149035453796,
+      "fire_count_cell_30d_all": 4751.937737464905,
+      "fire_count_cell_30d_human": 1343.4823713302612,
+      "fire_count_cell_30d_lightning": 1887.4973411560059,
+      "fire_count_3x3_30d_all": 22775.310703277588,
+      "fire_count_3x3_30d_human": 767.452784538269,
+      "fire_count_3x3_30d_lightning": 860.0761108398438,
+      "fire_count_cell_365d_all": 242.84349918365479,
+      "fire_count_cell_365d_human": 710.1706085205078,
+      "fire_count_cell_365d_lightning": 18.868499755859375,
+      "fire_count_3x3_365d_all": 3089.1040811538696,
+      "fire_count_3x3_365d_human": 1156.5478887557983,
+      "fire_count_3x3_365d_lightning": 981.8199043273926,
+      "fire_count_cell_5y_all": 28566.0796585083,
+      "fire_count_cell_5y_human": 10204.028136253357,
+      "fire_count_cell_5y_lightning": 369.23090171813965,
+      "fire_count_3x3_5y_all": 25463.736949920654,
+      "fire_count_3x3_5y_human": 4309.28702545166,
+      "fire_count_3x3_5y_lightning": 5866.668674468994,
+      "days_since_last_fire_human": 39173.65618801117,
+      "days_since_last_fire_lightning": 16194.924576759338,
+      "road_length_km": 1640.7592000961304,
+      "road_rail_1km_share": 4349.075806617737,
+      "nearest_community_km": 5947.125303268433,
+      "population_per_km2": 3232.1610107421875,
+      "pop_missing": 12.443499565124512,
+      "census_da_coverage_share": 767.9544897079468,
+      "provincial_park_point_count": 138.0088987350464,
+      "campground_point_count": 808.7298002243042,
+      "recreation_point_count": 924.2035064697266,
+      "provincial_park_share": 702.554799079895,
+      "fuel_conifer_share": 3768.882221221924,
+      "fuel_deciduous_share": 1910.556583404541,
+      "fuel_mixedwood_share": 6662.48623085022,
+      "fuel_open_grass_share": 2583.048497200012,
+      "fuel_non_fuel_share": 693.1683397293091,
+      "fuel_water_share": 5697.934400558472,
+      "fuel_classified_share": 2417.4165182113647
+    },
+    "2019": {
+      "temperature": 20709.055042266846,
+      "RH": 8445.759812355042,
+      "wind": 4764.710448265076,
+      "rain_24h": 3519.281204223633,
+      "FFMC": 4164.786276817322,
+      "DMC": 49619.32113647461,
+      "DC": 5202.737640380859,
+      "ISI": 2054.675808906555,
+      "BUI": 29354.06636428833,
+      "FWI": 3223.87354183197,
+      "fire_count_cell_30d_all": 12404.333501815796,
+      "fire_count_cell_30d_human": 58820.76358509064,
+      "fire_count_cell_30d_lightning": 1382.588918685913,
+      "fire_count_3x3_30d_all": 22388.437061309814,
+      "fire_count_3x3_30d_human": 532.998104095459,
+      "fire_count_3x3_30d_lightning": 1541.7452087402344,
+      "fire_count_cell_365d_all": 1227.2430124282837,
+      "fire_count_cell_365d_human": 1005.5528173446655,
+      "fire_count_cell_365d_lightning": 0.0,
+      "fire_count_3x3_365d_all": 8183.597952842712,
+      "fire_count_3x3_365d_human": 343.35850048065186,
+      "fire_count_3x3_365d_lightning": 4678.683156967163,
+      "fire_count_cell_5y_all": 14169.966296195984,
+      "fire_count_cell_5y_human": 19176.785851478577,
+      "fire_count_cell_5y_lightning": 182.71119689941406,
+      "fire_count_3x3_5y_all": 24044.690751075745,
+      "fire_count_3x3_5y_human": 4935.443905830383,
+      "fire_count_3x3_5y_lightning": 1484.45188331604,
+      "days_since_last_fire_human": 23402.158204078674,
+      "days_since_last_fire_lightning": 13667.026602745056,
+      "road_length_km": 5169.954827308655,
+      "road_rail_1km_share": 3483.874406814575,
+      "nearest_community_km": 4720.452427864075,
+      "population_per_km2": 1544.9975032806396,
+      "pop_missing": 16.892900466918945,
+      "census_da_coverage_share": 1092.5143032073975,
+      "provincial_park_point_count": 672.6871032714844,
+      "campground_point_count": 910.3274049758911,
+      "recreation_point_count": 1681.6455488204956,
+      "provincial_park_share": 402.5303020477295,
+      "fuel_conifer_share": 5787.281596183777,
+      "fuel_deciduous_share": 2684.392436981201,
+      "fuel_mixedwood_share": 1605.6917028427124,
+      "fuel_open_grass_share": 3261.139301300049,
+      "fuel_non_fuel_share": 444.3030014038086,
+      "fuel_water_share": 6062.683146476746,
+      "fuel_classified_share": 1149.4640979766846
+    }
+  },
+  "lightgbm_top_15_mean_gain": [
+    {
+      "feature": "fuel_open_grass_share",
+      "mean_gain": 651483.2930003166
+    },
+    {
+      "feature": "fire_count_3x3_5y_all",
+      "mean_gain": 46675.77294311523
+    },
+    {
+      "feature": "DMC",
+      "mean_gain": 41857.94608602524
+    },
+    {
+      "feature": "BUI",
+      "mean_gain": 32755.07605676651
+    },
+    {
+      "feature": "fuel_mixedwood_share",
+      "mean_gain": 32223.1009806633
+    },
+    {
+      "feature": "temperature",
+      "mean_gain": 30980.309583568574
+    },
+    {
+      "feature": "days_since_last_fire_human",
+      "mean_gain": 23713.101047134398
+    },
+    {
+      "feature": "fuel_water_share",
+      "mean_gain": 22871.211476802826
+    },
+    {
+      "feature": "fire_count_3x3_30d_all",
+      "mean_gain": 21062.968815517426
+    },
+    {
+      "feature": "fire_count_cell_30d_human",
+      "mean_gain": 19411.987587738036
+    },
+    {
+      "feature": "fire_count_cell_5y_all",
+      "mean_gain": 18384.007614231108
+    },
+    {
+      "feature": "fire_count_cell_5y_human",
+      "mean_gain": 18306.397410202026
+    },
+    {
+      "feature": "RH",
+      "mean_gain": 17760.860810565948
+    },
+    {
+      "feature": "population_per_km2",
+      "mean_gain": 14412.023988723755
+    },
+    {
+      "feature": "days_since_last_fire_lightning",
+      "mean_gain": 13432.02159023285
+    }
+  ]
+}

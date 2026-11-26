@@ -1,0 +1,1050 @@
+{
+  "source": "data/model_table_v2.parquet",
+  "reference": "data/models_v2.checks.json",
+  "year_filter": "year <= 2019",
+  "years": [
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "rows_read": 17346570,
+  "row_groups_read": 229,
+  "partial_row_groups": [
+    {
+      "row_group": 228,
+      "training_prefix_rows": 56874,
+      "total_rows": 75832
+    }
+  ],
+  "features": [
+    "temperature",
+    "RH",
+    "wind",
+    "rain_24h",
+    "FFMC",
+    "DMC",
+    "DC",
+    "ISI",
+    "BUI",
+    "FWI",
+    "fire_count_cell_30d_all",
+    "fire_count_cell_30d_human",
+    "fire_count_cell_30d_lightning",
+    "fire_count_3x3_30d_all",
+    "fire_count_3x3_30d_human",
+    "fire_count_3x3_30d_lightning",
+    "fire_count_cell_365d_all",
+    "fire_count_cell_365d_human",
+    "fire_count_cell_365d_lightning",
+    "fire_count_3x3_365d_all",
+    "fire_count_3x3_365d_human",
+    "fire_count_3x3_365d_lightning",
+    "fire_count_cell_5y_all",
+    "fire_count_cell_5y_human",
+    "fire_count_cell_5y_lightning",
+    "fire_count_3x3_5y_all",
+    "fire_count_3x3_5y_human",
+    "fire_count_3x3_5y_lightning",
+    "days_since_last_fire_human",
+    "days_since_last_fire_lightning",
+    "road_length_km",
+    "road_rail_1km_share",
+    "nearest_community_km",
+    "population_per_km2",
+    "pop_missing",
+    "census_da_coverage_share",
+    "provincial_park_point_count",
+    "campground_point_count",
+    "recreation_point_count",
+    "provincial_park_share",
+    "fuel_conifer_share",
+    "fuel_deciduous_share",
+    "fuel_mixedwood_share",
+    "fuel_open_grass_share",
+    "fuel_non_fuel_share",
+    "fuel_water_share",
+    "fuel_classified_share",
+    "days_since_rain_ge_2mm",
+    "rain_total_3d",
+    "rain_total_7d",
+    "rain_total_14d",
+    "temperature_max_3d",
+    "RH_min_3d",
+    "temperature_max_7d",
+    "RH_min_7d",
+    "FFMC_change_1d",
+    "FFMC_change_3d",
+    "DMC_change_1d",
+    "DMC_change_3d",
+    "BUI_change_1d",
+    "BUI_change_3d",
+    "FWI_anomaly_doy7",
+    "DMC_anomaly_doy7",
+    "temperature_anomaly_doy7"
+  ],
+  "targets": [
+    "target_human",
+    "target_lightning"
+  ],
+  "top_cells_per_day": 95,
+  "top_k_ties": "cell_id ascending",
+  "lightgbm_parameters": {
+    "objective": "binary",
+    "metric": "binary_logloss",
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "min_data_in_leaf": 200,
+    "feature_fraction": 0.8,
+    "is_unbalance": false,
+    "scale_pos_weight": 1.0,
+    "seed": 42,
+    "verbosity": -1,
+    "num_threads": 16,
+    "force_col_wise": true,
+    "num_boost_round": 1000,
+    "early_stopping_rounds": 50
+  },
+  "anomaly_normals": "Refit within each fitting split; exclude each row's year and all years outside that fitting split",
+  "combined_score": "P(target_human) + P(target_lightning), unmodified for ranking and PR-AUC",
+  "brier_method": "Mean squared error against target_any; cap combined scores at 1 for Brier only",
+  "pr_auc_method": "Non-interpolated average precision for target_any over all cell-days in each year",
+  "folds": {
+    "2010": {
+      "training_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 650,
+        "target_human": 299,
+        "target_lightning": 336
+      },
+      "base_rate": 0.0003747138483285168,
+      "target_human": {
+        "best_iteration": 50,
+        "refit_iterations": 50,
+        "early_stopping_log_loss": 0.0013719583099584445,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 57,
+        "refit_iterations": 57,
+        "early_stopping_log_loss": 0.001277334126513941,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 6
+    },
+    "2011": {
+      "training_years": [
+        2010,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 1242,
+        "target_human": 395,
+        "target_lightning": 818
+      },
+      "base_rate": 0.0007159916917292583,
+      "target_human": {
+        "best_iteration": 61,
+        "refit_iterations": 61,
+        "early_stopping_log_loss": 0.0013206286467489963,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 78,
+        "refit_iterations": 78,
+        "early_stopping_log_loss": 0.0012417993252955527,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 9
+    },
+    "2012": {
+      "training_years": [
+        2010,
+        2011,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 1401,
+        "target_human": 446,
+        "target_lightning": 933
+      },
+      "base_rate": 0.0008076524638588493,
+      "target_human": {
+        "best_iteration": 56,
+        "refit_iterations": 56,
+        "early_stopping_log_loss": 0.001785137447537647,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 64,
+        "refit_iterations": 64,
+        "early_stopping_log_loss": 0.001237413279718956,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 5
+    },
+    "2013": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 521,
+        "target_human": 287,
+        "target_lightning": 224
+      },
+      "base_rate": 0.0003003475615063958,
+      "target_human": {
+        "best_iteration": 53,
+        "refit_iterations": 53,
+        "early_stopping_log_loss": 0.0012530644049180495,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 53,
+        "refit_iterations": 53,
+        "early_stopping_log_loss": 0.001287258125956046,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 4
+    },
+    "2014": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 289,
+        "target_human": 163,
+        "target_lightning": 116
+      },
+      "base_rate": 0.0001666035417952944,
+      "target_human": {
+        "best_iteration": 50,
+        "refit_iterations": 50,
+        "early_stopping_log_loss": 0.0012959025356359052,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 70,
+        "refit_iterations": 70,
+        "early_stopping_log_loss": 0.0012171990431841485,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 2
+    },
+    "2015": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 573,
+        "target_human": 261,
+        "target_lightning": 306
+      },
+      "base_rate": 0.00033032466937267714,
+      "target_human": {
+        "best_iteration": 67,
+        "refit_iterations": 67,
+        "early_stopping_log_loss": 0.0013777697217978316,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 53,
+        "refit_iterations": 53,
+        "early_stopping_log_loss": 0.0012700820827878684,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 0
+    },
+    "2016": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2017,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 558,
+        "target_human": 375,
+        "target_lightning": 168
+      },
+      "base_rate": 0.0003216774267189421,
+      "target_human": {
+        "best_iteration": 72,
+        "refit_iterations": 72,
+        "early_stopping_log_loss": 0.001488299937589747,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 60,
+        "refit_iterations": 60,
+        "early_stopping_log_loss": 0.0012393369529200933,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 1
+    },
+    "2017": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2018,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 733,
+        "target_human": 189,
+        "target_lightning": 539
+      },
+      "base_rate": 0.0004225619243458505,
+      "target_human": {
+        "best_iteration": 53,
+        "refit_iterations": 53,
+        "early_stopping_log_loss": 0.0013056444662882004,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 64,
+        "refit_iterations": 64,
+        "early_stopping_log_loss": 0.0012363192069565695,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 8
+    },
+    "2018": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2019
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 1238,
+        "target_human": 336,
+        "target_lightning": 892
+      },
+      "base_rate": 0.000713685760354929,
+      "target_human": {
+        "best_iteration": 73,
+        "refit_iterations": 73,
+        "early_stopping_log_loss": 0.001293837321702173,
+        "early_stopping_year": 2019
+      },
+      "target_lightning": {
+        "best_iteration": 52,
+        "refit_iterations": 52,
+        "early_stopping_log_loss": 0.0012346544656618172,
+        "early_stopping_year": 2019
+      },
+      "brier_clipped_rows": 10
+    },
+    "2019": {
+      "training_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018
+      ],
+      "training_rows": 15611913,
+      "validation_rows": 1734657,
+      "positives": {
+        "target_any": 501,
+        "target_human": 251,
+        "target_lightning": 244
+      },
+      "base_rate": 0.00028881790463474913,
+      "target_human": {
+        "best_iteration": 73,
+        "refit_iterations": 73,
+        "early_stopping_log_loss": 0.0017323558717031655,
+        "early_stopping_year": 2018
+      },
+      "target_lightning": {
+        "best_iteration": 52,
+        "refit_iterations": 52,
+        "early_stopping_log_loss": 0.003929340691372841,
+        "early_stopping_year": 2018
+      },
+      "brier_clipped_rows": 1
+    }
+  },
+  "models": {
+    "lightgbm_combined": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.09692307692307692,
+          "top_1pct_catch_human": 0.12374581939799331,
+          "top_1pct_catch_lightning": 0.0744047619047619,
+          "pr_auc": 0.0040144458417243735,
+          "pr_auc_over_base_rate": 10.713363969950887,
+          "brier_score": 0.0004018171485150827
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.10547504025764895,
+          "top_1pct_catch_human": 0.14936708860759493,
+          "top_1pct_catch_lightning": 0.0843520782396088,
+          "pr_auc": 0.005293231218162993,
+          "pr_auc_over_base_rate": 7.392866815784994,
+          "brier_score": 0.0008297733403402779
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.08708065667380442,
+          "top_1pct_catch_human": 0.11434977578475336,
+          "top_1pct_catch_lightning": 0.07288317256162916,
+          "pr_auc": 0.0067168548839653406,
+          "pr_auc_over_base_rate": 8.316516304393053,
+          "brier_score": 0.0008768946326767502
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.1036468330134357,
+          "top_1pct_catch_human": 0.156794425087108,
+          "top_1pct_catch_lightning": 0.022321428571428572,
+          "pr_auc": 0.002334469596397386,
+          "pr_auc_over_base_rate": 7.772560511857773,
+          "brier_score": 0.0003361955843749217
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.17301038062283736,
+          "top_1pct_catch_human": 0.22085889570552147,
+          "top_1pct_catch_lightning": 0.09482758620689655,
+          "pr_auc": 0.002001243076529353,
+          "pr_auc_over_base_rate": 12.012007997934871,
+          "brier_score": 0.0002020991960206311
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.13787085514834205,
+          "top_1pct_catch_human": 0.1724137931034483,
+          "top_1pct_catch_lightning": 0.10130718954248366,
+          "pr_auc": 0.004906815421123394,
+          "pr_auc_over_base_rate": 14.854523067992396,
+          "brier_score": 0.0003534887122335549
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.12544802867383512,
+          "top_1pct_catch_human": 0.136,
+          "top_1pct_catch_lightning": 0.1130952380952381,
+          "pr_auc": 0.003993981733883051,
+          "pr_auc_over_base_rate": 12.416108194538301,
+          "brier_score": 0.0003892305776202743
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.08458390177353342,
+          "top_1pct_catch_human": 0.14285714285714285,
+          "top_1pct_catch_lightning": 0.06307977736549165,
+          "pr_auc": 0.003650450214010121,
+          "pr_auc_over_base_rate": 8.638852683334452,
+          "brier_score": 0.00045362607573164063
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.08723747980613894,
+          "top_1pct_catch_human": 0.16666666666666666,
+          "top_1pct_catch_lightning": 0.053811659192825115,
+          "pr_auc": 0.007188476128701567,
+          "pr_auc_over_base_rate": 10.07232668496371,
+          "brier_score": 0.0007702645359194068
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.12375249500998003,
+          "top_1pct_catch_human": 0.19123505976095617,
+          "top_1pct_catch_lightning": 0.05737704918032787,
+          "pr_auc": 0.0028314678766610418,
+          "pr_auc_over_base_rate": 9.803643857335754,
+          "brier_score": 0.0003610993772503144
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.11250287479026329,
+          "min": {
+            "year": 2017,
+            "value": 0.08458390177353342
+          },
+          "max": {
+            "year": 2014,
+            "value": 0.17301038062283736
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.1574288666971185,
+          "min": {
+            "year": 2012,
+            "value": 0.11434977578475336
+          },
+          "max": {
+            "year": 2014,
+            "value": 0.22085889570552147
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.07374599408606913,
+          "min": {
+            "year": 2013,
+            "value": 0.022321428571428572
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.1130952380952381
+          }
+        },
+        "pr_auc": {
+          "mean": 0.004293143599115862,
+          "min": {
+            "year": 2014,
+            "value": 0.002001243076529353
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.007188476128701567
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 10.199277008808618,
+          "min": {
+            "year": 2011,
+            "value": 7.392866815784994
+          },
+          "max": {
+            "year": 2015,
+            "value": 14.854523067992396
+          }
+        },
+        "brier_score": {
+          "mean": 0.0004974489180682855,
+          "min": {
+            "year": 2014,
+            "value": 0.0002020991960206311
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008768946326767502
+          }
+        }
+      }
+    },
+    "lightgbm_v2_single": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.13384615384615384,
+          "top_1pct_catch_human": 0.1605351170568562,
+          "top_1pct_catch_lightning": 0.11607142857142858,
+          "pr_auc": 0.004746668309834131,
+          "pr_auc_over_base_rate": 12.667448323587609,
+          "brier_score": 0.0004423003283981881
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.12318840579710146,
+          "top_1pct_catch_human": 0.18734177215189873,
+          "top_1pct_catch_lightning": 0.09290953545232274,
+          "pr_auc": 0.0059724996720292465,
+          "pr_auc_over_base_rate": 8.341576782273137,
+          "brier_score": 0.0007548100247542197
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.10278372591006424,
+          "top_1pct_catch_human": 0.17040358744394618,
+          "top_1pct_catch_lightning": 0.06859592711682744,
+          "pr_auc": 0.008102274097363181,
+          "pr_auc_over_base_rate": 10.031881855039062,
+          "brier_score": 0.0008291603981840008
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.10748560460652591,
+          "top_1pct_catch_human": 0.14634146341463414,
+          "top_1pct_catch_lightning": 0.05357142857142857,
+          "pr_auc": 0.002909776461939592,
+          "pr_auc_over_base_rate": 9.688030917732718,
+          "brier_score": 0.0003132837611059667
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.14186851211072665,
+          "top_1pct_catch_human": 0.15950920245398773,
+          "top_1pct_catch_lightning": 0.09482758620689655,
+          "pr_auc": 0.00197536182619045,
+          "pr_auc_over_base_rate": 11.85666165859532,
+          "brier_score": 0.00017836174905960726
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.15706806282722513,
+          "top_1pct_catch_human": 0.19540229885057472,
+          "top_1pct_catch_lightning": 0.11764705882352941,
+          "pr_auc": 0.004009126456257823,
+          "pr_auc_over_base_rate": 12.136927174926399,
+          "brier_score": 0.0003779632017291814
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14695340501792115,
+          "top_1pct_catch_human": 0.176,
+          "top_1pct_catch_lightning": 0.08928571428571429,
+          "pr_auc": 0.007335983869550815,
+          "pr_auc_over_base_rate": 22.805404607891415,
+          "brier_score": 0.00035278297976167316
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.0927694406548431,
+          "top_1pct_catch_human": 0.19576719576719576,
+          "top_1pct_catch_lightning": 0.05380333951762523,
+          "pr_auc": 0.003464161554922061,
+          "pr_auc_over_base_rate": 8.19799739478368,
+          "brier_score": 0.0004321509665683352
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.12035541195476575,
+          "top_1pct_catch_human": 0.23809523809523808,
+          "top_1pct_catch_lightning": 0.07286995515695067,
+          "pr_auc": 0.00858857095953141,
+          "pr_auc_over_base_rate": 12.034107217243841,
+          "brier_score": 0.0007181448080617952
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.1497005988023952,
+          "top_1pct_catch_human": 0.2151394422310757,
+          "top_1pct_catch_lightning": 0.0860655737704918,
+          "pr_auc": 0.003623779109584132,
+          "pr_auc_over_base_rate": 12.546933730327108,
+          "brier_score": 0.00031540969650268723
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.12760193215277224,
+          "min": {
+            "year": 2017,
+            "value": 0.0927694406548431
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.15706806282722513
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.18445353174654072,
+          "min": {
+            "year": 2013,
+            "value": 0.14634146341463414
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.23809523809523808
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.08456475474732153,
+          "min": {
+            "year": 2013,
+            "value": 0.05357142857142857
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.11764705882352941
+          }
+        },
+        "pr_auc": {
+          "mean": 0.005072820231720284,
+          "min": {
+            "year": 2014,
+            "value": 0.00197536182619045
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.00858857095953141
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 12.03069696624003,
+          "min": {
+            "year": 2017,
+            "value": 8.19799739478368
+          },
+          "max": {
+            "year": 2016,
+            "value": 22.805404607891415
+          }
+        },
+        "brier_score": {
+          "mean": 0.00047143679141256546,
+          "min": {
+            "year": 2014,
+            "value": 0.00017836174905960726
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008291603981840008
+          }
+        }
+      }
+    },
+    "climatology_loyo": {
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.13076923076923078,
+          "top_1pct_catch_human": 0.1939799331103679,
+          "top_1pct_catch_lightning": 0.07738095238095238,
+          "pr_auc": 0.0022516497052734,
+          "pr_auc_over_base_rate": 6.008984496616063,
+          "brier_score": 0.0003743266484910544
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.10547504025764895,
+          "top_1pct_catch_human": 0.22784810126582278,
+          "top_1pct_catch_lightning": 0.040342298288508556,
+          "pr_auc": 0.0034484237237835,
+          "pr_auc_over_base_rate": 4.816290138025052,
+          "brier_score": 0.000714522308015015
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.09778729478943611,
+          "top_1pct_catch_human": 0.19955156950672645,
+          "top_1pct_catch_lightning": 0.05144694533762058,
+          "pr_auc": 0.003308224270728212,
+          "pr_auc_over_base_rate": 4.096098778578578,
+          "brier_score": 0.0008060942139705803
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.12667946257197696,
+          "top_1pct_catch_human": 0.1916376306620209,
+          "top_1pct_catch_lightning": 0.04017857142857143,
+          "pr_auc": 0.0027912997070399935,
+          "pr_auc_over_base_rate": 9.293565404827012,
+          "brier_score": 0.00030009519712860414
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.13494809688581316,
+          "top_1pct_catch_human": 0.1901840490797546,
+          "top_1pct_catch_lightning": 0.034482758620689655,
+          "pr_auc": 0.0011492474713040365,
+          "pr_auc_over_base_rate": 6.898097476919883,
+          "brier_score": 0.00016712581043905526
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.12390924956369982,
+          "top_1pct_catch_human": 0.20689655172413793,
+          "top_1pct_catch_lightning": 0.05555555555555555,
+          "pr_auc": 0.0018239949423038732,
+          "pr_auc_over_base_rate": 5.5218247724816925,
+          "brier_score": 0.00033020749047449777
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14516129032258066,
+          "top_1pct_catch_human": 0.192,
+          "top_1pct_catch_lightning": 0.05357142857142857,
+          "pr_auc": 0.002798498158780273,
+          "pr_auc_over_base_rate": 8.699703262751456,
+          "brier_score": 0.00032126720334755264
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.06412005457025921,
+          "top_1pct_catch_human": 0.20105820105820105,
+          "top_1pct_catch_lightning": 0.014842300556586271,
+          "pr_auc": 0.0015980656726173104,
+          "pr_auc_over_base_rate": 3.7818496663919863,
+          "brier_score": 0.0004225023042824887
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.0912762520193861,
+          "top_1pct_catch_human": 0.2261904761904762,
+          "top_1pct_catch_lightning": 0.03811659192825112,
+          "pr_auc": 0.0033220375957544617,
+          "pr_auc_over_base_rate": 4.65476233419923,
+          "brier_score": 0.0007122866139756051
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.1157684630738523,
+          "top_1pct_catch_human": 0.199203187250996,
+          "top_1pct_catch_lightning": 0.03278688524590164,
+          "pr_auc": 0.0026300732266524443,
+          "pr_auc_over_base_rate": 9.106337191866764,
+          "brier_score": 0.000288638733315827
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.1135894434823884,
+          "min": {
+            "year": 2017,
+            "value": 0.06412005457025921
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.14516129032258066
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.2028549699848504,
+          "min": {
+            "year": 2014,
+            "value": 0.1901840490797546
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.22784810126582278
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.043870428791406575,
+          "min": {
+            "year": 2017,
+            "value": 0.014842300556586271
+          },
+          "max": {
+            "year": 2010,
+            "value": 0.07738095238095238
+          }
+        },
+        "pr_auc": {
+          "mean": 0.0025121514474237506,
+          "min": {
+            "year": 2014,
+            "value": 0.0011492474713040365
+          },
+          "max": {
+            "year": 2011,
+            "value": 0.0034484237237835
+          }
+        },
+        "pr_auc_over_base_rate": {
+          "mean": 6.287751352265771,
+          "min": {
+            "year": 2017,
+            "value": 3.7818496663919863
+          },
+          "max": {
+            "year": 2013,
+            "value": 9.293565404827012
+          }
+        },
+        "brier_score": {
+          "mean": 0.000443706652344028,
+          "min": {
+            "year": 2014,
+            "value": 0.00016712581043905526
+          },
+          "max": {
+            "year": 2012,
+            "value": 0.0008060942139705803
+          }
+        }
+      }
+    }
+  },
+  "combined_vs_v2_single": {
+    "top_1pct_catch_any": {
+      "candidate_mean": 0.11250287479026329,
+      "reference_mean": 0.12760193215277224,
+      "mean_delta": -0.01509905736250895,
+      "win_count": 1,
+      "win_years": [
+        2014
+      ],
+      "loss_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "tie_years": []
+    },
+    "top_1pct_catch_human": {
+      "candidate_mean": 0.1574288666971185,
+      "reference_mean": 0.18445353174654072,
+      "mean_delta": -0.027024665049422216,
+      "win_count": 2,
+      "win_years": [
+        2013,
+        2014
+      ],
+      "loss_years": [
+        2010,
+        2011,
+        2012,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "tie_years": []
+    },
+    "top_1pct_catch_lightning": {
+      "candidate_mean": 0.07374599408606913,
+      "reference_mean": 0.08456475474732153,
+      "mean_delta": -0.01081876066125239,
+      "win_count": 3,
+      "win_years": [
+        2012,
+        2016,
+        2017
+      ],
+      "loss_years": [
+        2010,
+        2011,
+        2013,
+        2015,
+        2018,
+        2019
+      ],
+      "tie_years": [
+        2014
+      ]
+    }
+  },
+  "combined_vs_climatology": {
+    "top_1pct_catch_any": {
+      "candidate_mean": 0.11250287479026329,
+      "reference_mean": 0.1135894434823884,
+      "mean_delta": -0.0010865686921251144,
+      "win_count": 4,
+      "win_years": [
+        2014,
+        2015,
+        2017,
+        2019
+      ],
+      "loss_years": [
+        2010,
+        2012,
+        2013,
+        2016,
+        2018
+      ],
+      "tie_years": [
+        2011
+      ]
+    },
+    "top_1pct_catch_human": {
+      "candidate_mean": 0.1574288666971185,
+      "reference_mean": 0.2028549699848504,
+      "mean_delta": -0.045426103287731875,
+      "win_count": 1,
+      "win_years": [
+        2014
+      ],
+      "loss_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "tie_years": []
+    },
+    "top_1pct_catch_lightning": {
+      "candidate_mean": 0.07374599408606913,
+      "reference_mean": 0.043870428791406575,
+      "mean_delta": 0.02987556529466256,
+      "win_count": 8,
+      "win_years": [
+        2011,
+        2012,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "loss_years": [
+        2010,
+        2013
+      ],
+      "tie_years": []
+    }
+  }
+}

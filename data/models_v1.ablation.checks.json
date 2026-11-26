@@ -1,0 +1,588 @@
+{
+  "years": [
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019
+  ],
+  "top_cells_per_day": 95,
+  "baseline": {
+    "annual": {
+      "2010": {
+        "top_1pct_catch_any": 0.15076923076923077,
+        "top_1pct_catch_human": 0.21070234113712374,
+        "top_1pct_catch_lightning": 0.10119047619047619,
+        "pr_auc": 0.00569925430451913,
+        "pr_auc_over_base_rate": 15.209617498637295,
+        "brier_score": 0.0003886110677295561
+      },
+      "2011": {
+        "top_1pct_catch_any": 0.11674718196457327,
+        "top_1pct_catch_human": 0.15949367088607594,
+        "top_1pct_catch_lightning": 0.0941320293398533,
+        "pr_auc": 0.006050388864111876,
+        "pr_auc_over_base_rate": 8.450361832410398,
+        "brier_score": 0.0007397149169565842
+      },
+      "2012": {
+        "top_1pct_catch_any": 0.09493219129193434,
+        "top_1pct_catch_human": 0.11659192825112108,
+        "top_1pct_catch_lightning": 0.08467309753483387,
+        "pr_auc": 0.009296509478352902,
+        "pr_auc_over_base_rate": 11.510531935896653,
+        "brier_score": 0.0008150661853566092
+      },
+      "2013": {
+        "top_1pct_catch_any": 0.11516314779270634,
+        "top_1pct_catch_human": 0.17770034843205576,
+        "top_1pct_catch_lightning": 0.03125,
+        "pr_auc": 0.0029727972108301295,
+        "pr_auc_over_base_rate": 9.897856989149634,
+        "brier_score": 0.00031434393414920273
+      },
+      "2014": {
+        "top_1pct_catch_any": 0.15570934256055363,
+        "top_1pct_catch_human": 0.1901840490797546,
+        "top_1pct_catch_lightning": 0.07758620689655173,
+        "pr_auc": 0.0021903556265614813,
+        "pr_auc_over_base_rate": 13.147113218353839,
+        "brier_score": 0.00017769628556829481
+      },
+      "2015": {
+        "top_1pct_catch_any": 0.17277486910994763,
+        "top_1pct_catch_human": 0.23371647509578544,
+        "top_1pct_catch_lightning": 0.11437908496732026,
+        "pr_auc": 0.00515778609795585,
+        "pr_auc_over_base_rate": 15.614292773685516,
+        "brier_score": 0.0003356528115839104
+      },
+      "2016": {
+        "top_1pct_catch_any": 0.14336917562724014,
+        "top_1pct_catch_human": 0.176,
+        "top_1pct_catch_lightning": 0.08333333333333333,
+        "pr_auc": 0.005285463054589462,
+        "pr_auc_over_base_rate": 16.43094173097669,
+        "brier_score": 0.0003498223922665113
+      },
+      "2017": {
+        "top_1pct_catch_any": 0.08458390177353342,
+        "top_1pct_catch_human": 0.18518518518518517,
+        "top_1pct_catch_lightning": 0.04823747680890538,
+        "pr_auc": 0.0036557828616561906,
+        "pr_auc_over_base_rate": 8.651472484927616,
+        "brier_score": 0.0004349362626244052
+      },
+      "2018": {
+        "top_1pct_catch_any": 0.12116316639741519,
+        "top_1pct_catch_human": 0.24404761904761904,
+        "top_1pct_catch_lightning": 0.07286995515695067,
+        "pr_auc": 0.008444127280678155,
+        "pr_auc_over_base_rate": 11.831716071340328,
+        "brier_score": 0.0007185340083500993
+      },
+      "2019": {
+        "top_1pct_catch_any": 0.13572854291417166,
+        "top_1pct_catch_human": 0.21115537848605578,
+        "top_1pct_catch_lightning": 0.06147540983606557,
+        "pr_auc": 0.0034744745893069023,
+        "pr_auc_over_base_rate": 12.029983368589507,
+        "brier_score": 0.00030344747268094054
+      }
+    },
+    "summary": {
+      "top_1pct_catch_any": {
+        "mean": 0.12909407502013065,
+        "min": {
+          "year": 2017,
+          "value": 0.08458390177353342
+        },
+        "max": {
+          "year": 2015,
+          "value": 0.17277486910994763
+        }
+      },
+      "top_1pct_catch_human": {
+        "mean": 0.19047769956007765,
+        "min": {
+          "year": 2012,
+          "value": 0.11659192825112108
+        },
+        "max": {
+          "year": 2018,
+          "value": 0.24404761904761904
+        }
+      },
+      "top_1pct_catch_lightning": {
+        "mean": 0.07691270700642903,
+        "min": {
+          "year": 2013,
+          "value": 0.03125
+        },
+        "max": {
+          "year": 2015,
+          "value": 0.11437908496732026
+        }
+      },
+      "pr_auc": {
+        "mean": 0.005222693936856208,
+        "min": {
+          "year": 2014,
+          "value": 0.0021903556265614813
+        },
+        "max": {
+          "year": 2012,
+          "value": 0.009296509478352902
+        }
+      },
+      "pr_auc_over_base_rate": {
+        "mean": 12.277388790396747,
+        "min": {
+          "year": 2011,
+          "value": 8.450361832410398
+        },
+        "max": {
+          "year": 2016,
+          "value": 16.43094173097669
+        }
+      },
+      "brier_score": {
+        "mean": 0.00045778253372661136,
+        "min": {
+          "year": 2014,
+          "value": 0.00017769628556829481
+        },
+        "max": {
+          "year": 2012,
+          "value": 0.0008150661853566092
+        }
+      }
+    }
+  },
+  "ablation_parameters": {
+    "objective": "binary",
+    "metric": "binary_logloss",
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "min_data_in_leaf": 200,
+    "feature_fraction": 0.8,
+    "is_unbalance": false,
+    "scale_pos_weight": 1.0,
+    "seed": 42,
+    "verbosity": -1,
+    "num_threads": 10,
+    "force_col_wise": true,
+    "num_boost_round": 1000,
+    "early_stopping_rounds": 50
+  },
+  "ablation": {
+    "no_access": {
+      "dropped_features": [
+        "campground_point_count",
+        "census_da_coverage_share",
+        "nearest_community_km",
+        "pop_missing",
+        "population_per_km2",
+        "provincial_park_point_count",
+        "provincial_park_share",
+        "recreation_point_count",
+        "road_length_km",
+        "road_rail_1km_share"
+      ],
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.14,
+          "top_1pct_catch_human": 0.17391304347826086,
+          "top_1pct_catch_lightning": 0.11607142857142858
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.11513687600644122,
+          "top_1pct_catch_human": 0.17215189873417722,
+          "top_1pct_catch_lightning": 0.08801955990220049
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.08279800142755175,
+          "top_1pct_catch_human": 0.11434977578475336,
+          "top_1pct_catch_lightning": 0.06538049303322616
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.11900191938579655,
+          "top_1pct_catch_human": 0.17770034843205576,
+          "top_1pct_catch_lightning": 0.03571428571428571
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.14186851211072665,
+          "top_1pct_catch_human": 0.15337423312883436,
+          "top_1pct_catch_lightning": 0.08620689655172414
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.13263525305410123,
+          "top_1pct_catch_human": 0.1685823754789272,
+          "top_1pct_catch_lightning": 0.09803921568627451
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14336917562724014,
+          "top_1pct_catch_human": 0.17866666666666667,
+          "top_1pct_catch_lightning": 0.07142857142857142
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.08731241473396999,
+          "top_1pct_catch_human": 0.164021164021164,
+          "top_1pct_catch_lightning": 0.059369202226345084
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.12116316639741519,
+          "top_1pct_catch_human": 0.22916666666666666,
+          "top_1pct_catch_lightning": 0.07511210762331838
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.13373253493013973,
+          "top_1pct_catch_human": 0.20717131474103587,
+          "top_1pct_catch_lightning": 0.06147540983606557
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.12170178536733825,
+          "min": {
+            "year": 2012,
+            "value": 0.08279800142755175
+          },
+          "max": {
+            "year": 2016,
+            "value": 0.14336917562724014
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.1739097487132542,
+          "min": {
+            "year": 2012,
+            "value": 0.11434977578475336
+          },
+          "max": {
+            "year": 2018,
+            "value": 0.22916666666666666
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.075681717057344,
+          "min": {
+            "year": 2013,
+            "value": 0.03571428571428571
+          },
+          "max": {
+            "year": 2010,
+            "value": 0.11607142857142858
+          }
+        }
+      },
+      "full_wins": {
+        "top_1pct_catch_any": [
+          2010,
+          2011,
+          2012,
+          2014,
+          2015,
+          2019
+        ],
+        "top_1pct_catch_human": [
+          2010,
+          2012,
+          2014,
+          2015,
+          2017,
+          2018,
+          2019
+        ],
+        "top_1pct_catch_lightning": [
+          2011,
+          2012,
+          2015,
+          2016
+        ]
+      },
+      "ties": {
+        "top_1pct_catch_any": [
+          2016,
+          2018
+        ],
+        "top_1pct_catch_human": [
+          2013
+        ],
+        "top_1pct_catch_lightning": [
+          2019
+        ]
+      }
+    },
+    "no_fuel": {
+      "dropped_features": [
+        "fuel_classified_share",
+        "fuel_conifer_share",
+        "fuel_deciduous_share",
+        "fuel_mixedwood_share",
+        "fuel_non_fuel_share",
+        "fuel_open_grass_share",
+        "fuel_water_share"
+      ],
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.14307692307692307,
+          "top_1pct_catch_human": 0.20066889632107024,
+          "top_1pct_catch_lightning": 0.09821428571428571
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.11996779388083736,
+          "top_1pct_catch_human": 0.16962025316455695,
+          "top_1pct_catch_lightning": 0.09535452322738386
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.1006423982869379,
+          "top_1pct_catch_human": 0.13228699551569506,
+          "top_1pct_catch_lightning": 0.08467309753483387
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.11324376199616124,
+          "top_1pct_catch_human": 0.16376306620209058,
+          "top_1pct_catch_lightning": 0.04017857142857143
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.1384083044982699,
+          "top_1pct_catch_human": 0.18404907975460122,
+          "top_1pct_catch_lightning": 0.0603448275862069
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.16230366492146597,
+          "top_1pct_catch_human": 0.2260536398467433,
+          "top_1pct_catch_lightning": 0.10130718954248366
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.14874551971326164,
+          "top_1pct_catch_human": 0.18133333333333335,
+          "top_1pct_catch_lightning": 0.07738095238095238
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.10504774897680765,
+          "top_1pct_catch_human": 0.2275132275132275,
+          "top_1pct_catch_lightning": 0.06307977736549165
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.12197092084006463,
+          "top_1pct_catch_human": 0.21428571428571427,
+          "top_1pct_catch_lightning": 0.08856502242152467
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.1497005988023952,
+          "top_1pct_catch_human": 0.23107569721115537,
+          "top_1pct_catch_lightning": 0.06967213114754098
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.13031076349931245,
+          "min": {
+            "year": 2012,
+            "value": 0.1006423982869379
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.16230366492146597
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.19306499031481877,
+          "min": {
+            "year": 2012,
+            "value": 0.13228699551569506
+          },
+          "max": {
+            "year": 2019,
+            "value": 0.23107569721115537
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.07787703783492751,
+          "min": {
+            "year": 2013,
+            "value": 0.04017857142857143
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.10130718954248366
+          }
+        }
+      },
+      "full_wins": {
+        "top_1pct_catch_any": [
+          2010,
+          2013,
+          2014,
+          2015
+        ],
+        "top_1pct_catch_human": [
+          2010,
+          2013,
+          2014,
+          2015,
+          2018
+        ],
+        "top_1pct_catch_lightning": [
+          2010,
+          2014,
+          2015,
+          2016
+        ]
+      },
+      "ties": {
+        "top_1pct_catch_any": [],
+        "top_1pct_catch_human": [],
+        "top_1pct_catch_lightning": [
+          2012
+        ]
+      }
+    },
+    "neither": {
+      "dropped_features": [
+        "campground_point_count",
+        "census_da_coverage_share",
+        "fuel_classified_share",
+        "fuel_conifer_share",
+        "fuel_deciduous_share",
+        "fuel_mixedwood_share",
+        "fuel_non_fuel_share",
+        "fuel_open_grass_share",
+        "fuel_water_share",
+        "nearest_community_km",
+        "pop_missing",
+        "population_per_km2",
+        "provincial_park_point_count",
+        "provincial_park_share",
+        "recreation_point_count",
+        "road_length_km",
+        "road_rail_1km_share"
+      ],
+      "annual": {
+        "2010": {
+          "top_1pct_catch_any": 0.11384615384615385,
+          "top_1pct_catch_human": 0.1505016722408027,
+          "top_1pct_catch_lightning": 0.08630952380952381
+        },
+        "2011": {
+          "top_1pct_catch_any": 0.1143317230273752,
+          "top_1pct_catch_human": 0.1670886075949367,
+          "top_1pct_catch_lightning": 0.08924205378973105
+        },
+        "2012": {
+          "top_1pct_catch_any": 0.1006423982869379,
+          "top_1pct_catch_human": 0.12556053811659193,
+          "top_1pct_catch_lightning": 0.09003215434083602
+        },
+        "2013": {
+          "top_1pct_catch_any": 0.11516314779270634,
+          "top_1pct_catch_human": 0.17073170731707318,
+          "top_1pct_catch_lightning": 0.03571428571428571
+        },
+        "2014": {
+          "top_1pct_catch_any": 0.16262975778546712,
+          "top_1pct_catch_human": 0.1901840490797546,
+          "top_1pct_catch_lightning": 0.09482758620689655
+        },
+        "2015": {
+          "top_1pct_catch_any": 0.13787085514834205,
+          "top_1pct_catch_human": 0.18007662835249041,
+          "top_1pct_catch_lightning": 0.09803921568627451
+        },
+        "2016": {
+          "top_1pct_catch_any": 0.15770609318996415,
+          "top_1pct_catch_human": 0.18933333333333333,
+          "top_1pct_catch_lightning": 0.09523809523809523
+        },
+        "2017": {
+          "top_1pct_catch_any": 0.09822646657571624,
+          "top_1pct_catch_human": 0.20105820105820105,
+          "top_1pct_catch_lightning": 0.061224489795918366
+        },
+        "2018": {
+          "top_1pct_catch_any": 0.1122778675282714,
+          "top_1pct_catch_human": 0.19047619047619047,
+          "top_1pct_catch_lightning": 0.0795964125560538
+        },
+        "2019": {
+          "top_1pct_catch_any": 0.10578842315369262,
+          "top_1pct_catch_human": 0.16733067729083664,
+          "top_1pct_catch_lightning": 0.045081967213114756
+        }
+      },
+      "summary": {
+        "top_1pct_catch_any": {
+          "mean": 0.12184828863346268,
+          "min": {
+            "year": 2017,
+            "value": 0.09822646657571624
+          },
+          "max": {
+            "year": 2014,
+            "value": 0.16262975778546712
+          }
+        },
+        "top_1pct_catch_human": {
+          "mean": 0.1732341604860211,
+          "min": {
+            "year": 2012,
+            "value": 0.12556053811659193
+          },
+          "max": {
+            "year": 2017,
+            "value": 0.20105820105820105
+          }
+        },
+        "top_1pct_catch_lightning": {
+          "mean": 0.07753057843507298,
+          "min": {
+            "year": 2013,
+            "value": 0.03571428571428571
+          },
+          "max": {
+            "year": 2015,
+            "value": 0.09803921568627451
+          }
+        }
+      },
+      "full_wins": {
+        "top_1pct_catch_any": [
+          2010,
+          2011,
+          2015,
+          2018,
+          2019
+        ],
+        "top_1pct_catch_human": [
+          2010,
+          2013,
+          2015,
+          2018,
+          2019
+        ],
+        "top_1pct_catch_lightning": [
+          2010,
+          2011,
+          2015,
+          2019
+        ]
+      },
+      "ties": {
+        "top_1pct_catch_any": [
+          2013
+        ],
+        "top_1pct_catch_human": [
+          2014
+        ],
+        "top_1pct_catch_lightning": []
+      }
+    }
+  }
+}

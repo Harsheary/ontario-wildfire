@@ -5,3 +5,4 @@ __pycache__/
 data/*
 !data/*.checks.json
 !data/static_sources.json
+!data/cems_compare.monthly_bias.svg
