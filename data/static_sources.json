@@ -1,0 +1,111 @@
+{
+  "roads": {
+    "dataset": "Geospatial Ontario — Ontario Road Network Road Net Element",
+    "date": "2026-11-26",
+    "version": "Live LIO layer snapshot captured 2026-11-26; 585333 features",
+    "url": "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open09/MapServer/0",
+    "catalogue": "https://data.ontario.ca/dataset/ontario-road-network-road-net-element",
+    "file": "roads.geojsonl.gz",
+    "sha256": "48adb511ea46368110c2ef850601203f1ba038823ee8361f6a46a450b7c3d1d1",
+    "arcgis": {"where": "1=1", "fields": "OBJECTID,ROAD_ELEMENT_TYPE", "oid": "OBJECTID", "page_size": 2000}
+  },
+  "rail_on": {
+    "dataset": "Natural Resources Canada — National Railway Network GeoBase, Ontario",
+    "date": "2017-05-10",
+    "version": "NRWN ON 2.0 (package date stamp 2017-05-10, FTP posting 2019-07-25)",
+    "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_nrwn_rfn/on/nrwn_rfn_on_shp_en.zip",
+    "catalogue": "https://open.canada.ca/data/en/dataset/ac26807e-a1e8-49fa-87bf-451175a859b8",
+    "file": "rail_on.zip",
+    "sha256": "fda17afffeaa9051edaccc22ecb68a0a7a2537a4e067a7445c1771731811d936"
+  },
+  "rail_mb": {
+    "dataset": "Natural Resources Canada — National Railway Network GeoBase, Manitoba",
+    "date": "2016-04-04",
+    "version": "NRWN MB 2.0 (metadata dated 2016-04-04, FTP posting 2019-07-25)",
+    "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_nrwn_rfn/mb/nrwn_rfn_mb_shp_en.zip",
+    "file": "rail_mb.zip",
+    "sha256": "6ac70bf6f76c601f34e0dedf3feb7c12c283a4de019de4b0f636c8aa95e28359"
+  },
+  "rail_qc": {
+    "dataset": "Natural Resources Canada — National Railway Network GeoBase, Quebec",
+    "date": "2016-04-04",
+    "version": "NRWN QC 2.0 (metadata dated 2016-04-04, FTP posting 2019-07-25)",
+    "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_nrwn_rfn/qc/nrwn_rfn_qc_shp_en.zip",
+    "file": "rail_qc.zip",
+    "sha256": "15c2a925fe8d601eac3007e16c1a025d63dddfae4f75f8c5249fad575491bb56"
+  },
+  "communities": {
+    "dataset": "Natural Resources Canada — Canadian Geographical Names Database",
+    "date": "2026-11-25",
+    "version": "Canada English CSV, official names; FTP posting 2026-11-25",
+    "url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/cgn_canada_csv_eng.zip",
+    "catalogue": "https://open.canada.ca/data/en/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c",
+    "file": "community.zip",
+    "sha256": "d2839b3a6ab6ef47ccdbbb5302344c4298331aa8e6817e6d0eab22bb42806285"
+  },
+  "da_boundaries": {
+    "dataset": "Statistics Canada — 2021 Census Cartographic Dissemination Areas",
+    "date": "2021-01-01",
+    "version": "2021 reference geography; layer 12 extract captured 2026-11-26, 5 m service generalization",
+    "url": "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/12",
+    "catalogue": "https://open.canada.ca/data/en/dataset/ef70dc3b-1069-4037-9bce-61f47e628a1d",
+    "file": "da.geojsonl.gz",
+    "sha256": "612344caef767df87a0a07eb538f0709516f15bee00291278f4e4e3de4b40c91",
+    "arcgis": {"where": "PRUID IN ('24','35','46')", "fields": "OBJECTID,DAUID,DGUID", "oid": "OBJECTID", "page_size": 200, "bbox": "-10000,-380000,1490000,880000", "workers": 6, "max_offset": 5}
+  },
+  "da_population": {
+    "dataset": "Statistics Canada — 2021 Census Population and Dwelling Counts",
+    "date": "2021-05-11",
+    "version": "Table 98-10-0015, 2021 Census, released 2022-02-09",
+    "url": "https://www150.statcan.gc.ca/n1/tbl/csv/98100015-eng.zip",
+    "file": "da_population.zip",
+    "sha256": "7b74ba93b645b44f8f5aff67fff02287f34b4e7d22e6838caaf45f4bd7f8b299"
+  },
+  "park_boundaries": {
+    "dataset": "Land Information Ontario — Provincial Park Regulated",
+    "date": "2026-11-26",
+    "version": "Live LIO layer snapshot captured 2026-11-26; 347 features",
+    "url": "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open03/MapServer/4",
+    "catalogue": "https://open.canada.ca/data/en/dataset/f04ea1cf-0821-4d65-8613-8dabfd1e94de",
+    "file": "parks.geojsonl.gz",
+    "sha256": "c6d7602725413bb5036d7be5245f15ab886842848d32ec0d7d4ccb164583a821",
+    "arcgis": {"where": "1=1", "fields": "OBJECTID,PROTECTED_SITE_IDENT", "oid": "OBJECTID", "page_size": 12}
+  },
+  "park_points": {
+    "dataset": "Land Information Ontario — Geographic Names Ontario, provincial parks and provincial nature reserves",
+    "date": "2026-11-26",
+    "version": "Live LIO layer snapshot captured 2026-11-26; 335 names",
+    "url": "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open09/MapServer/36",
+    "file": "park_points.geojsonl.gz",
+    "sha256": "c90e77c3acf2a692908e43cc578f50885a24a239f001ef81d8b5cadd7c3288ff",
+    "arcgis": {"where": "GEONAME_STATUS_CODE IN ('A1','A6','A8') AND ENTITY_TYPE IN ('Provincial Park','Provincial Nature Reserve')", "fields": "OBJECTID,OFFICIAL_NAME,LATITUDE_DECIMAL_DEGREES,LONGITUDE_DECIMAL_DEGREES", "oid": "OBJECTID", "page_size": 1000}
+  },
+  "campgrounds": {
+    "dataset": "OpenStreetMap contributors — Geofabrik Ontario extract",
+    "date": "2026-11-01T21:21:36Z",
+    "version": "Dated Ontario PBF 261101; OSM replication timestamp 2026-11-01T21:21:36Z",
+    "url": "https://download.geofabrik.de/north-america/canada/ontario/ontario-261101.osm.pbf",
+    "licence": "https://www.openstreetmap.org/copyright",
+    "file": "ontario-261101.osm.pbf",
+    "sha256": "36d063a8659fc268bd93321c9ae7da2c8bd95100a230cff17e21861c61aa2f86"
+  },
+  "recreation": {
+    "dataset": "Statistics Canada — Open Database of Recreational and Sport Facilities",
+    "date": "2021-09-26",
+    "version": "ODRSF 1.0, issue 2021001; archive date 2021-09-26, inputs collected 2020–2021",
+    "url": "https://www150.statcan.gc.ca/n1/en/pub/21-26-0002/2021001/ODRSF_v1.0.zip",
+    "catalogue": "https://www.statcan.gc.ca/en/lode/databases/odrsf",
+    "file": "recreation.zip",
+    "sha256": "3176db35632c0aab58c57e025899d6e221a23c3a1a4b80d22a7988dadaa13b62"
+  },
+  "fuel": {
+    "dataset": "Canadian Forest Service — National FBP Fuels Grid",
+    "date": "2014",
+    "version": "2014b national grid, 250 m (archived GeoTIFF member dated 2015-04-23)",
+    "url": "https://cwfis.cfs.nrcan.gc.ca/downloads/fuels/archive/National_FBP_Fueltypes_version2014b.zip",
+    "catalogue": "https://cwfis.cfs.nrcan.gc.ca/downloads/fuels/archive/",
+    "legend": "https://cwfis.cfs.nrcan.gc.ca/downloads/fuels/archive/nat_fbpfuels_2014b_metadata.pdf",
+    "file": "fbp2014b.zip",
+    "sha256": "8675bbd92d99366e46b6537d5b512017d0982e3a34f97e4bc81fb60b93c29a2b"
+  }
+}
