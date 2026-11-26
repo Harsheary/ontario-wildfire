@@ -1,4 +1,6 @@
 .venv/
 .cache/
 __pycache__/
-data/
+data/*
+!data/*.checks.json
+!data/static_sources.json
