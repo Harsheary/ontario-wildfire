@@ -1,6 +1,7 @@
 .venv/
 .cache/
 __pycache__/
+.cdsapirc
 data/*
 !data/*.checks.json
 !data/static_sources.json

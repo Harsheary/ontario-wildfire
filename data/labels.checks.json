@@ -557,14 +557,14 @@
         "fire_human": true,
         "fire_lightning": false,
         "n_fires": 5,
-        "fire_any_pm1": true
+        "check_fire_any_pm1": true
       },
       "stored": {
         "fire_any": true,
         "fire_human": true,
         "fire_lightning": false,
         "n_fires": 5,
-        "fire_any_pm1": true
+        "check_fire_any_pm1": true
       }
     },
     {
@@ -606,14 +606,14 @@
         "fire_human": false,
         "fire_lightning": true,
         "n_fires": 6,
-        "fire_any_pm1": true
+        "check_fire_any_pm1": true
       },
       "stored": {
         "fire_any": true,
         "fire_human": false,
         "fire_lightning": true,
         "n_fires": 6,
-        "fire_any_pm1": true
+        "check_fire_any_pm1": true
       }
     },
     {
@@ -654,14 +654,14 @@
         "fire_human": true,
         "fire_lightning": false,
         "n_fires": 5,
-        "fire_any_pm1": true
+        "check_fire_any_pm1": true
       },
       "stored": {
         "fire_any": true,
         "fire_human": true,
         "fire_lightning": false,
         "n_fires": 5,
-        "fire_any_pm1": true
+        "check_fire_any_pm1": true
       }
     }
   ],

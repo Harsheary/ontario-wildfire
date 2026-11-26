@@ -6,7 +6,7 @@ uv pip install --python .venv/bin/python -r requirements.txt
 .venv/bin/python build_fire_weather.py
 ```
 
-The build publishes one `data/ontario-fire-weather.parquet` and a separate `data/ontario-fire-weather.checks.json`. The JSON reports annual row counts, full-table null fractions, and three independent rain-window checks. Completed weather blocks are cached under `.cache/fire-weather` so the build can resume after a transfer failure. Run one build at a time per cache/output path.
+The build publishes one `data/ontario-fire-weather.parquet` and a separate `data/ontario-fire-weather.checks.json`. It requires 184 rows per native cell each year, no null keys, and at most 0.1% nulls per field across the table. The JSON reports annual row counts, full-table null fractions, and three independent rain-window checks. Completed weather blocks are cached under `.cache/fire-weather` by zone snapshot, source URL and variables, rain window, and noon rule. Run one build at a time per cache/output path.
 
 ## Sources and conventions
 

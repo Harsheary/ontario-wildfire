@@ -2,6 +2,7 @@
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from contextlib import ExitStack
 import hashlib
 import json
 from pathlib import Path
@@ -27,10 +28,18 @@ CASR = f"{THREDDS}/dodsC/datasets/reanalyses/1hr_NAM_GovCan_CaSR_v32_196801-2024
 ZONE_URL = "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open09/MapServer/34/query"
 ZONE_PARAMS = {"where": "1=1", "outFields": "OFFICIAL_NAME", "outSR": 4326, "f": "geojson"}
 REGULATION = "https://www.ontario.ca/laws/regulation/960207"
-EPOCH = np.datetime64("1968-01-01T00", "h")
+TIME_ORIGIN = "1968-01-01"
+EPOCH = np.datetime64(TIME_ORIGIN, "h")
+NOON_RULE = (-90, 16, 17)  # Longitude split, UTC hours at/east and west.
+RAIN_WINDOW = (-11, 12)  # Inclusive hours relative to midnight on D.
+RAIN_OFFSETS = np.arange(RAIN_WINDOW[0], RAIN_WINDOW[1] + 1)
 WEATHER = {"hurs": ("%", "P_HR_1.5m"), "sfcWind": ("m s-1", "P_UVC_10m"), "tas": ("K", "P_TT_1.5m")}
 SOURCE = {**WEATHER, "pr": ("kg m-2 s-1", "A_PR0_SFC")}
+KEY_FIELDS = ("cell_id", "date", "latitude", "longitude", "noon_utc_hour")
 FIELDS = ("temperature", "RH", "wind", "rain_24h", "FFMC", "DMC", "DC", "ISI", "BUI", "FWI")
+YEARS = range(2010, 2025)
+DAYS_PER_YEAR = 184
+MAX_MISSING_SHARE = 0.001
 SPOTS = ("2010-05-01", "2015-07-01", "2018-10-31")
 
 
@@ -71,13 +80,25 @@ def dap(s, projections):
 
 def check_metadata(s):
     das = fetch(s, f"{CASR}.das").text
+    attrs = {name: dict(re.findall(r'^[ \t]+String (\w+) "([^"\n]*)";$', body, re.M))
+             for name, body in re.findall(r"^    (\w+) \{(.*?)^    \}", das, re.M | re.S)}
+    if attrs.get("time", {}).get("units") != f"hours since {TIME_ORIGIN}":
+        raise ValueError("Source time coordinate must use hours since " + TIME_ORIGIN)
+    dds = fetch(s, f"{CASR}.dds?{','.join(SOURCE)}").text
+    grids = {name: body for body, name in re.findall(r"^    Grid \{(.*?)^    \} (\w+);", dds, re.M | re.S)}
     for name, (units, original) in SOURCE.items():
-        block = re.search(rf"^    {name} \{{(.*?)^    \}}", das, re.M | re.S)
-        expected = (f'units "{units}"', f'original_variable "{original}"')
-        if not block or not all(attribute in block[1] for attribute in expected):
-            raise ValueError(f"Source metadata changed for {name}")
-    if 'units "hours since 1968-01-01"' not in das or 'cell_methods "time: mean (interval: 1 hour)"' not in das:
-        raise ValueError("Source time metadata changed")
+        methods = "time: mean (interval: 1 hour)" if name == "pr" else "time: point"
+        expected = {"units": units, "original_variable": original, "cell_methods": methods}
+        actual = attrs.get(name, {})
+        for key, value in expected.items():
+            if actual.get(key) != value:
+                raise ValueError(f"Source {name} {key}: expected {value!r}, got {actual.get(key)!r}")
+        # DAS declares time units on the shared coordinate; DDS binds each field to it.
+        array, _, maps = grids.get(name, "").partition("MAPS:")
+        axis = re.search(rf"^[ \t]*Float32 {name}\[time = (\d+)\]", array, re.M)
+        time = re.search(r"^[ \t]*Int32 time\[time = (\d+)\];$", maps, re.M)
+        if not axis or not time or axis[1] != time[1]:
+            raise ValueError(f"Source {name} must use the shared hourly time coordinate")
 
 
 def grid(s, zone_path):
@@ -96,10 +117,11 @@ def grid(s, zone_path):
     lat, lon = native["lat"], (native["lon"].astype("float64") + 180) % 360 - 180
     x, y = to_metres(lon, lat)
     row, col = np.where(shapely.intersects_xy(buffered, x, y))
+    boundary, east, west = NOON_RULE
     return {
         "row": row, "col": col, "id": (row * lat.shape[1] + col).astype("int32"),
         "lat": lat[row, col].astype("float32"), "lon": lon[row, col].astype("float32"),
-        "noon": np.where(lon[row, col] >= -90, 16, 17).astype("uint8"),
+        "noon": np.where(lon[row, col] >= boundary, east, west).astype("uint8"),
         "inside": shapely.intersects_xy(region, x[row, col], y[row, col]),
         "zone_sha256": hashlib.sha256(raw).hexdigest(),
     }
@@ -110,7 +132,7 @@ def hours(times):
 
 
 def rain_hours(days):
-    return hours(days)[:, None] + np.arange(-11, 13)
+    return hours(days)[:, None] + RAIN_OFFSETS
 
 
 def read_block(s, times, variables, row, col):
@@ -134,7 +156,7 @@ def rain_total(flux):
 def daily_weather(s, days, cells):
     row, col = cells["row"], cells["col"]
     temps = np.empty((len(days), len(row), 3), dtype="float32")
-    for utc in (16, 17):
+    for utc in NOON_RULE[1:]:
         select = cells["noon"] == utc
         if not select.any():
             continue
@@ -143,7 +165,7 @@ def daily_weather(s, days, cells):
         temps[:, select, 1] = noon["hurs"]
         temps[:, select, 2] = noon["sfcWind"] * 3.6
     t = rain_hours(days)
-    flux = read_block(s, t.ravel(), ("pr",), row, col)["pr"].reshape(len(days), 24, len(row))
+    flux = read_block(s, t.ravel(), ("pr",), row, col)["pr"].reshape(len(days), len(RAIN_OFFSETS), len(row))
     return np.concatenate((temps, rain_total(flux)[..., None]), axis=-1)
 
 
@@ -194,27 +216,42 @@ def nearest_cell(cells, lat, lon):
 
 
 def rain_audit(s, day, cells, cell, stored):
-    cutoff = hours(np.datetime64(day)) + 12
-    times = np.arange(cutoff - 23, cutoff + 2)
+    date = np.datetime64(day, "D")
+    previous = date - np.timedelta64(1, "D")
+    timestamps = [previous + np.timedelta64(h, "h") for h in range(13, 24)]
+    timestamps += [date + np.timedelta64(h, "h") for h in range(13)]
+    first = np.datetime64(f"{previous}T13", "h")
+    last = np.datetime64(f"{date}T12", "h")
+    if len(timestamps) != 24 or timestamps[0] != first or timestamps[-1] != last:
+        raise ValueError(f"Invalid rain audit window for {day}: expected {first} through {last}")
+    times = hours(np.array([*timestamps, date + np.timedelta64(13, "h")]))
     ref = read_block(s, times, ("pr",), cells["row"][[cell]], cells["col"][[cell]])["pr"][:, 0]
-    expected = float(rain_total(ref[:24][None, :])[0])
+    expected = sum(float(hourly_flux) * 3600 for hourly_flux in ref[:-1])
     if not np.isfinite(expected) or not np.isclose(expected, stored, rtol=1e-6):
         raise ValueError(f"Rain spot check failed for {day}, cell {cells['id'][cell]}")
     return {"cell_id": int(cells["id"][cell]), "date": str(day), "hour_count": 24,
-            "first_hour_utc": str(EPOCH + np.timedelta64(int(times[0]), "h")),
-            "last_hour_utc": str(EPOCH + np.timedelta64(int(times[23]), "h")), "stored_mm": float(stored),
-            "independent_sum_mm": expected, "excluded_13_utc_mm": float(ref[24]) * 3600}
+            "first_hour_utc": str(first), "last_hour_utc": str(last), "stored_mm": float(stored),
+            "independent_sum_mm": expected, "excluded_13_utc_mm": float(ref[-1]) * 3600}
+
+
+def _weather_cache_key(zone_sha256):
+    inputs = (zone_sha256, CASR, tuple(SOURCE), RAIN_WINDOW, NOON_RULE)
+    return "v32-" + hashlib.sha256(json.dumps(inputs).encode()).hexdigest()
 
 
 def build(zone_path, output, cache, workers):
     with session() as s:
         check_metadata(s)
         cells = grid(s, zone_path)
-    cache = cache / f"v32-{cells['zone_sha256']}"
+    cache = cache / _weather_cache_key(cells["zone_sha256"])
     cache.mkdir(parents=True, exist_ok=True)
     output.parent.mkdir(parents=True, exist_ok=True)
     tmp = output.with_suffix(".tmp")
     report = {"cells": len(cells["id"]), "rows_by_year": {}, "rain_audits": []}
+    if not report["cells"]:
+        raise ValueError("No native cells in the Ontario fire-weather grid")
+    annual_rows = DAYS_PER_YEAR * report["cells"]
+    total = annual_rows * len(YEARS)
     missing = dict.fromkeys(FIELDS, 0)
     metadata = {"CaSR_version": "3.2", "hourly_url": CASR, "THREDDS_catalog": CATALOG,
                 "hourly_variables_and_units": json.dumps(SOURCE), "zone_query": requests.Request(
@@ -229,8 +266,8 @@ def build(zone_path, output, cache, workers):
     print(f"{report['cells']} cells; {np.count_nonzero(cells['noon'] == 17)} use 17 UTC", flush=True)
     writer = None
     try:
-        with ThreadPoolExecutor(max_workers=workers) as executor:
-            for year in range(2010, 2025):
+        with ThreadPoolExecutor(max_workers=workers) as executor, ExitStack() as resources:
+            for year in YEARS:
                 days = np.arange(f"{year}-04-01", f"{year}-11-01", dtype="datetime64[D]")
                 # Bound DAP response size; cache reduced weather only, not the hourly cube.
                 offsets = range(0, len(days), 14)
@@ -241,25 +278,31 @@ def build(zone_path, output, cache, workers):
                     weather[i:i + 14] = future.result()
                 scores = fwi(days, cells, weather)
                 current = table(days[30:], cells, weather[30:], scores[30:], metadata)
-                if writer is None:
-                    writer = pq.ParquetWriter(tmp, current.schema, compression="zstd")
-                writer.write_table(current)
-                report["rows_by_year"][year] = len(current)
+                if len(current) != annual_rows:
+                    raise ValueError(f"{year}: expected {annual_rows} rows, got {len(current)}")
+                for k in KEY_FIELDS:
+                    if current[k].null_count:
+                        raise ValueError(f"{year}: null values in key column {k}")
                 for k in FIELDS:
                     missing[k] += current[k].null_count
+                    # Future years cannot reduce the missing count or increase the fixed row budget.
+                    if missing[k] / total > MAX_MISSING_SHARE:
+                        raise ValueError(f"{year}: {k} missing share exceeds {MAX_MISSING_SHARE:.1%}")
                 with session() as s:
                     for day, lat, lon in zip(SPOTS, (50, 48, 51), (-93, -81, -87), strict=True):
                         if day.startswith(str(year)):
                             cell = nearest_cell(cells, lat, lon)
                             report["rain_audits"].append(rain_audit(s, day, cells, cell, weather[days == np.datetime64(day), cell, 3].item()))
+                if writer is None:
+                    writer = resources.enter_context(pq.ParquetWriter(tmp, current.schema, compression="zstd"))
+                writer.write_table(current)
+                report["rows_by_year"][year] = len(current)
                 print(f"{year}: {len(current)} rows", flush=True)
+        tmp.replace(output)
     finally:
-        if writer is not None:
-            writer.close()
-    tmp.replace(output)
-    total = sum(report["rows_by_year"].values())
+        tmp.unlink(missing_ok=True)
     report["missing_share"] = {k: count / total for k, count in missing.items()}
-    report["missing_share"].update(dict.fromkeys(("cell_id", "date", "latitude", "longitude", "noon_utc_hour"), 0))
+    report["missing_share"].update(dict.fromkeys(KEY_FIELDS, 0))
     return report
 
 

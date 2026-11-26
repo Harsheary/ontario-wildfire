@@ -46,7 +46,7 @@ EVENT_SCHEMA = pa.schema([
 LABEL_SCHEMA = pa.schema([
     ("cell_id", pa.int32()), ("date", pa.date32()), ("fire_any", pa.bool_()),
     ("fire_human", pa.bool_()), ("fire_lightning", pa.bool_()), ("n_fires", pa.uint32()),
-    pa.field("fire_any_pm1", pa.bool_(), metadata={b"role": b"check_only_never_train"}),
+    pa.field("check_fire_any_pm1", pa.bool_(), metadata={b"role": b"check_only_never_train"}),
 ])
 
 
@@ -303,7 +303,7 @@ def hand_checks(path, archive, events, squares):
         same_day = [e for e in nearby if e["date"] == day]
         expected = {"fire_any": bool(same_day), "fire_human": any(e["cause"] == "human" for e in same_day),
                     "fire_lightning": any(e["cause"] == "lightning" for e in same_day),
-                    "n_fires": len(same_day), "fire_any_pm1": bool(nearby)}
+                    "n_fires": len(same_day), "check_fire_any_pm1": bool(nearby)}
         output = pq.read_table(path, columns=LABEL_SCHEMA.names[2:],
                                filters=[("date", "=", day), ("cell_id", "=", cell)], partitioning=None).to_pylist()
         if output != [expected] or not same_day:
@@ -327,7 +327,7 @@ def build():
             b"nfdb_archive_sha256": SHA256.encode(), b"nfdb_url": URL.encode(),
             b"report_date": b"NFDB YEAR/MONTH/DAY, unchanged", b"grid_assignment": b"EPSG:3978 half-open tiles, west/south inclusive"}
     meta[b"deduplication"] = b"Exact report date, latitude, longitude and cause; lowest FIRE_ID with numeric suffix ordering"
-    label_schema = LABEL_SCHEMA.with_metadata({**meta, b"fire_any_pm1": b"Check only; never train; includes Apr 30 and Nov 1 reports"})
+    label_schema = LABEL_SCHEMA.with_metadata({**meta, b"check_fire_any_pm1": b"Check only; never train; includes Apr 30 and Nov 1 reports"})
     event_schema = EVENT_SCHEMA.with_metadata({
         **meta, b"merged_fire_ids": b"Source FIRE_ID list, including the retained representative",
         b"near_duplicate": b"Another retained fire on the same date, at a different position within 100 m (WGS84 geodesic)",

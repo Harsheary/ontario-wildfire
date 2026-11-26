@@ -25,7 +25,7 @@
       "first_hour_utc": "2010-04-30T13",
       "last_hour_utc": "2010-05-01T12",
       "stored_mm": 22.36627197265625,
-      "independent_sum_mm": 22.36627197265625,
+      "independent_sum_mm": 22.36627168022096,
       "excluded_13_utc_mm": 0.010721292346715927
     },
     {
@@ -35,7 +35,7 @@
       "first_hour_utc": "2015-06-30T13",
       "last_hour_utc": "2015-07-01T12",
       "stored_mm": 3.377779245376587,
-      "independent_sum_mm": 3.377779245376587,
+      "independent_sum_mm": 3.3777793243643828,
       "excluded_13_utc_mm": 0.027159880846738815
     },
     {
@@ -45,7 +45,7 @@
       "first_hour_utc": "2018-10-30T13",
       "last_hour_utc": "2018-10-31T12",
       "stored_mm": 3.99943470954895,
-      "independent_sum_mm": 3.99943470954895,
+      "independent_sum_mm": 3.9994346851017326,
       "excluded_13_utc_mm": 0.08482150733470917
     }
   ],
